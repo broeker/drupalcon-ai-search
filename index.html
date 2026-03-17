@@ -295,7 +295,7 @@ blockquote {
     <div style="width:50px;height:3px;background:linear-gradient(90deg,var(--accent),var(--amber));margin-bottom:0.4em;"></div>
     <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);margin:0;">Dan Moriarty &amp; Tim Broeker &mdash; Electric Citizen</p>
     <div class="title-stats">
-      <span>22 slides</span>
+      <span>23 slides</span>
       <span>~22 min</span>
     </div>
   </div>
@@ -305,28 +305,38 @@ blockquote {
 
 
 <!-- ════════════════ {001} ELECTRIC CITIZEN ════════════════ -->
-<section data-background-color="#060A12" data-id="001">
-  <span class="motif-bg pos-bl"><img src="assets/ec-bolt.svg" alt=""></span>
-  <div class="split">
-    <div class="split-content" style="justify-content:space-between;">
+<section data-background-color="#060A12" data-id="001" style="padding-bottom:0;">
+  <div style="display:flex;flex-direction:column;justify-content:space-between;height:100%;">
+    <div class="cols-2" style="align-items:center;flex:1;padding-top:1rem;">
       <div>
         <span class="slide-tag">{001}</span>
         <div class="accent-line"></div>
         <h2 style="font-size:1.5em;">Welcome!</h2>
-        <h3 style="font-size:0.82em;margin-bottom:0.5em;">Enterprise Drupal &middot; 15 Years in State &amp; Local Gov</h3>
-        <ul>
-          <li>State Gov &mdash; agencies and portals</li>
-          <li>City &amp; County &mdash; sites &amp; systems</li>
-          <li>Higher Ed &mdash; state university platforms</li>
-        </ul>
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--accent);margin:0.1em 0 0.5em;">Enterprise Drupal &middot; 15 Years in State &amp; Local Gov</p>
+        <div style="display:flex;flex-direction:column;gap:0.2em;">
+          <div style="border-left:3px solid var(--accent);padding:0.15em 0.6em;background:rgba(170,255,0,0.03);">
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;color:var(--text);">State Government</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:0.55em;color:var(--muted);display:block;">Agencies and portals</span>
+          </div>
+          <div style="border-left:3px solid var(--accent);padding:0.15em 0.6em;background:rgba(170,255,0,0.03);">
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;color:var(--text);">City &amp; County</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:0.55em;color:var(--muted);display:block;">Sites &amp; systems</span>
+          </div>
+          <div style="border-left:3px solid var(--accent);padding:0.15em 0.6em;background:rgba(170,255,0,0.03);">
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;color:var(--text);">Higher Education</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:0.55em;color:var(--muted);display:block;">State university platforms</span>
+          </div>
+        </div>
       </div>
-      <div class="panel panel-amber" style="padding:0.6rem 0.9rem;background:rgba(255,176,32,0.05);border:1px solid rgba(255,176,32,0.25);">
-        <div class="panel-label" style="color:var(--amber);font-size:0.6em;letter-spacing:0.15em;">CURRENT STATUS</div>
-        <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;line-height:1.35;margin:0;">Helping our clients figure out what AI means for their web presence.</p>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--panel2);border-radius:10px;padding:2.5rem;display:flex;align-items:center;justify-content:center;">
+          <img src="assets/2022-ec-logo-vertical-reversed-type.png" alt="Electric Citizen" style="width:150px;height:auto;opacity:0.9;">
+        </div>
       </div>
     </div>
-    <div class="split-visual" style="background:var(--panel2);">
-      <img src="assets/2022-ec-logo-vertical-reversed-type.png" alt="Electric Citizen" style="width:220px;height:auto;opacity:0.9;">
+    <div style="background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:0.5rem 1rem;margin:0.8em 0 0;flex-shrink:0;display:flex;align-items:center;gap:0.8em;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--dark);background:var(--accent);padding:0.2em 0.5em;border-radius:3px;white-space:nowrap;font-weight:500;letter-spacing:0.08em;">CURRENT STATUS</span>
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;line-height:1.2;margin:0;color:var(--text);">Helping our clients figure out what AI means for their web presence.</p>
     </div>
   </div>
   <aside class="notes">Quick intro — what it says on the tin. We build Drupal sites for government. Right now, the most interesting conversations we're having are about AI.</aside>
@@ -335,6 +345,7 @@ blockquote {
 
 <!-- ════════════════ {002} AGENDA ════════════════ -->
 <section data-background-color="#060A12" data-id="002">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <span class="motif-bg pos-tr"><img src="assets/ec-bolt.svg" alt=""></span>
   <div class="vc">
     <span class="slide-tag">{002}</span>
@@ -365,10 +376,11 @@ blockquote {
 
 <!-- ════════════════ SECTION: THE PROBLEM ════════════════ -->
 <section data-background-color="#060A12">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <span class="section-label">Section 01</span>
     <h1 style="font-size:3em;color:var(--cyan);line-height:1;">The Problem</h1>
-    <p class="divider-desc">Government search is stuck in the past &mdash; why it matters now more than ever.</p>
+    <p class="divider-desc" style="max-width:100%;">Government search is stuck in the past &mdash; AI is widening the gap every day.</p>
   </div>
 </section>
 
@@ -379,11 +391,14 @@ blockquote {
   <span class="slide-tag">{003}</span>
   <div class="accent-line"></div>
   <h2 style="font-size:1.3em;margin-bottom:0.05em;">For Most Gov Sites, It's Still 2006</h2>
-  <p style="color:var(--muted);font-size:0.62em;margin-bottom:0.5em;">20 years later, it is better but not a lot better.</p>
+  <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--accent);margin-bottom:0.8em;">
+    <span class="fragment fade-out" data-fragment-index="0" style="position:absolute;">20 years later search is better, but not a lot better.</span>
+    <span class="fragment fade-in" data-fragment-index="0">Today users want answers, not links.</span>
+  </p>
 
   <div class="cols-2" style="margin-top:0.15em;">
     <div class="fragment col-fade-on-advance" data-fragment-index="0">
-      <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--red);letter-spacing:0.1em;display:block;margin-bottom:0.15em;">WHAT USERS GET</span>
+      <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:#4A9EFF;letter-spacing:0.1em;display:block;margin-bottom:0.15em;">WHAT USERS GET</span>
       <div class="screenshot-frame">
         <div class="screenshot-chrome">
           <span class="mac-dot red"></span><span class="mac-dot yellow"></span><span class="mac-dot green"></span>
@@ -413,20 +428,20 @@ blockquote {
   <div class="vc">
     <span class="slide-tag">{004}</span>
     <div class="accent-line amber"></div>
-    <h2 style="font-size:1.4em;">Your Citizens Are Living in 2026</h2>
+    <h2 style="font-size:1.4em;">Your Citizens Are Living in <span style="color:var(--accent);">2026</span></h2>
 
     <div style="margin-top:0.4em;">
       <div style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
-        <p style="font-size:0.78em;margin:0;">They're asking <strong style="color:var(--accent);">ChatGPT or Claude</strong> instead of searching your site.</p>
+        <p style="font-size:0.78em;margin:0;">They're asking <strong style="color:var(--accent);">ChatGPT or Gemini</strong> instead of searching your site.</p>
       </div>
       <div class="fragment" data-fragment-index="0" style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
         <p style="font-size:0.78em;margin:0;">The answers they get back are <strong style="color:var(--accent);">pretty good</strong>.</p>
       </div>
-      <div class="fragment" data-fragment-index="1" style="border-left:3px solid var(--red);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(255,77,77,0.03);">
-        <p style="font-size:0.78em;margin:0;">But they come from <strong style="color:var(--red);">third-party vendor sites</strong>, not your .gov site.</p>
+      <div class="fragment" data-fragment-index="1" style="border-left:3px solid #4A9EFF;padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(74,158,255,0.03);">
+        <p style="font-size:0.78em;margin:0;">But they come from <strong style="color:#4A9EFF;">third-party vendor sites</strong>, not your .gov site.</p>
       </div>
-      <div class="fragment" data-fragment-index="2" style="border-left:3px solid var(--red);padding:0.35em 0.8em;background:rgba(255,77,77,0.03);">
-        <p style="font-size:0.78em;margin:0;">The answers can be <strong style="color:var(--red);">factually incorrect</strong>.</p>
+      <div class="fragment" data-fragment-index="2" style="border-left:3px solid #4A9EFF;padding:0.35em 0.8em;background:rgba(74,158,255,0.03);">
+        <p style="font-size:0.78em;margin:0;">The answers can be <strong style="color:#4A9EFF;">factually incorrect</strong>.</p>
       </div>
     </div>
   </div>
@@ -444,7 +459,7 @@ blockquote {
       The question isn't whether this is happening.
     </h2>
     <p style="font-size:0.95em;text-align:center;max-width:90%;margin:0.4em auto 0;line-height:1.5;">
-      It's whether <strong style="color:var(--amber);">your agency controls the answers</strong> &mdash; on your site and off.
+      It's whether <strong style="color:var(--accent);">your agency controls the answers</strong> &mdash; on your site and off.
     </p>
   </div>
   <aside class="notes">This is the core tension. Citizens are getting answers about your services from AI — answers you didn't write, can't verify, and can't update. The question is whether you take control of that.</aside>
@@ -456,8 +471,8 @@ blockquote {
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <span class="section-label">Section 02</span>
-    <h1 style="font-size:3em;color:var(--cyan);line-height:1;">So What Now?</h1>
-    <p class="divider-desc">Let's get on the same page.<br>What even is AI Search? A chatbot? How do we get from here to there?</p>
+    <h1 style="font-size:3em;color:var(--cyan);line-height:1;">What Now?</h1>
+    <p class="divider-desc">Let's get on the same page.<br>What even is AI Search? A chatbot?<br>How do we get from here to there?</p>
   </div>
   <aside class="notes">We know gov search is tough and stuck in the past. And there is a real cost to not getting better — trust and financial. How do we get from here to there?</aside>
 </section>
@@ -469,8 +484,8 @@ blockquote {
   <div class="vc">
     <span class="slide-tag">{006}</span>
     <div class="accent-line"></div>
-    <h2 style="font-size:1.3em;">"AI Search" Means Everything. And Nothing.</h2>
-    <p style="color:var(--muted);font-size:0.65em;margin-bottom:0.4em;">Depending on who's talking, it might mean...</p>
+    <h2 style="font-size:1.3em;">"AI Search" Means Everything. <span style="color:var(--accent);">And Nothing.</span></h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">Depending on who's talking, it might mean...</p>
 
     <div class="icon-grid" style="grid-template-columns:repeat(3,1fr);gap:0.8rem;">
       <div class="icon-grid-item fragment" data-fragment-index="0" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
@@ -509,10 +524,25 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {007} THE 5 STAGES ════════════════ -->
-<section data-background-color="#060A12" data-id="007" style="padding-top:0.3rem;">
+<!-- ════════════════ {007} FRAMEWORK ════════════════ -->
+<section data-background-color="#060A12" data-id="007" data-transition="fade">
+  <div class="slide-watermark wm-center"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc" style="align-items:center;text-align:center;">
+    <span class="slide-tag">{007}</span>
+    <div class="accent-line" style="margin:0 auto 0.4em;"></div>
+    <h2 style="font-size:1.3em;text-align:center;">"AI Search" Means Everything. <span style="color:var(--accent);">And Nothing.</span></h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:1.05em;font-weight:500;color:var(--accent);text-align:center;max-width:75%;margin:0.5em auto 0;line-height:1.4;">
+      To understand AI search, you need a framework to wrap your mind around.
+    </p>
+  </div>
+  <aside class="notes">Transition into the 5 Stages framework. This is the shared vocabulary that will ground the rest of the conversation.</aside>
+</section>
+
+
+<!-- ════════════════ {008} THE 5 STAGES ════════════════ -->
+<section data-background-color="#060A12" data-id="008" style="padding-top:0.3rem;">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
-  <span class="slide-tag">{007}</span>
+  <span class="slide-tag">{008}</span>
   <div class="accent-line"></div>
   <h2 style="font-size:1.2em;margin-bottom:0.05em;">The 5 Stages of Search</h2>
   <p style="color:var(--muted);font-size:0.55em;margin-bottom:0.25em;">Where you are &mdash; and where you're going</p>
@@ -594,8 +624,8 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {008} STAGE 1 ════════════════ -->
-<section data-background-color="#060A12" data-id="008">
+<!-- ════════════════ {009} STAGE 1 ════════════════ -->
+<section data-background-color="#060A12" data-id="009">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <div class="agenda-bar">
@@ -605,7 +635,7 @@ blockquote {
       <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
       <span class="agenda-bar-item">Stage 5</span>
     </div>
-    <span class="slide-tag">{008}</span>
+    <span class="slide-tag">{009}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Keyword Search</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You search. You hunt."</p>
@@ -625,7 +655,7 @@ blockquote {
         </div>
       </div>
       <div>
-        <div class="search-mockup" style="border-color:rgba(255,77,77,0.12);">
+        <div class="search-mockup" style="border-color:rgba(74,158,255,0.12);">
           <div class="search-bar"><span>renew contractor license</span></div>
           <div class="search-result-item"><span class="search-result-link">MN Dept of Labor - Licensing Portal</span><span class="search-result-snippet">...contractor licensing requirements for Minnesota including renewal...</span></div>
           <div class="search-result-item"><span class="search-result-link">FAQ: Contractor License Renewal</span><span class="search-result-snippet">...frequently asked questions about renewing your contractor license...</span></div>
@@ -638,8 +668,8 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {009} STAGE 2 ════════════════ -->
-<section data-background-color="#060A12" data-id="009">
+<!-- ════════════════ {010} STAGE 2 ════════════════ -->
+<section data-background-color="#060A12" data-id="010">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <div class="agenda-bar">
@@ -649,7 +679,7 @@ blockquote {
       <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
       <span class="agenda-bar-item">Stage 5</span>
     </div>
-    <span class="slide-tag">{009}</span>
+    <span class="slide-tag">{010}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Semantic Search</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You search. It understands."</p>
@@ -672,7 +702,7 @@ blockquote {
         <div class="compare bad" style="padding:0.4rem 0.6rem;margin-bottom:0.4em;">
           <span class="label bad" style="font-size:0.48em;margin-bottom:0.25rem;">STAGE 1 RESULT</span>
           <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;color:var(--muted);margin:0;">"how to get my building permit"</p>
-          <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--red);margin:0.2em 0 0;">→ "Building Codes Division" <span style="color:var(--muted);">(wrong)</span></p>
+          <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:#4A9EFF;margin:0.2em 0 0;">→ "Building Codes Division" <span style="color:var(--muted);">(wrong)</span></p>
         </div>
         <div class="compare good" style="padding:0.4rem 0.6rem;">
           <span class="label good" style="font-size:0.48em;margin-bottom:0.25rem;">STAGE 2 RESULT</span>
@@ -686,8 +716,8 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {010} STAGE 3 ════════════════ -->
-<section data-background-color="#060A12" data-id="010">
+<!-- ════════════════ {011} STAGE 3 ════════════════ -->
+<section data-background-color="#060A12" data-id="011">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <div class="agenda-bar">
@@ -697,10 +727,10 @@ blockquote {
       <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
       <span class="agenda-bar-item">Stage 5</span>
     </div>
-    <span class="slide-tag">{010}</span>
+    <span class="slide-tag">{011}</span>
     <div class="accent-line amber"></div>
     <h2 style="font-size:1.4em;">Grounded AI Search</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">"You ask. It answers. You can verify."</p>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You ask. It answers. You can verify."</p>
     <div class="cols-2" style="align-items:start;">
       <div>
         <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
@@ -730,8 +760,8 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {011} STAGE 4 ════════════════ -->
-<section data-background-color="#060A12" data-id="011">
+<!-- ════════════════ {012} STAGE 4 ════════════════ -->
+<section data-background-color="#060A12" data-id="012">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <div class="agenda-bar">
@@ -741,7 +771,7 @@ blockquote {
       <span class="agenda-bar-item active">Stage 4</span><span class="agenda-bar-sep">/</span>
       <span class="agenda-bar-item">Stage 5</span>
     </div>
-    <span class="slide-tag">{011}</span>
+    <span class="slide-tag">{012}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Conversational AI</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You talk. It assists."</p>
@@ -774,8 +804,8 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {012} STAGE 5 ════════════════ -->
-<section data-background-color="#060A12" data-id="012">
+<!-- ════════════════ {013} STAGE 5 ════════════════ -->
+<section data-background-color="#060A12" data-id="013">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
     <div class="agenda-bar">
@@ -785,7 +815,7 @@ blockquote {
       <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
       <span class="agenda-bar-item active">Stage 5</span>
     </div>
-    <span class="slide-tag">{012}</span>
+    <span class="slide-tag">{013}</span>
     <div class="accent-line amber"></div>
     <h2 style="font-size:1.4em;">Agentic AI</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">"You describe a goal. It acts."</p>
@@ -797,8 +827,8 @@ blockquote {
         <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
           <p style="font-size:0.7em;margin:0;">Search disappears &mdash; citizen states a need, system resolves it</p>
         </div>
-        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,77,77,0.03);">
-          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--red);">Nobody in government is here yet</strong></p>
+        <div style="border-left:3px solid #4A9EFF;padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(74,158,255,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:#4A9EFF;">Nobody in government is here yet</strong></p>
         </div>
         <div style="border-left:3px solid var(--muted);padding:0.3em 0.7em;background:rgba(170,255,0,0.02);">
           <p style="font-size:0.7em;margin:0;color:var(--muted);font-style:italic;">Requires everything above it to be solid.</p>
@@ -845,14 +875,14 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {013} BARRIERS ════════════════ -->
-<section data-background-color="#060A12" data-id="013">
+<!-- ════════════════ {014} BARRIERS ════════════════ -->
+<section data-background-color="#060A12" data-id="014">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{013}</span>
+    <span class="slide-tag">{014}</span>
     <div class="accent-line amber"></div>
     <h2 style="font-size:1.4em;">Understand the Barriers</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">The limitations are real.</p>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">The limitations are real.</p>
     <div class="icon-grid" style="margin-top:0.1em;">
       <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
         <span class="icon-grid-icon amber" style="font-size:1.1em;">&#128451;</span>
@@ -890,32 +920,32 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {014} BAD CONTENT ════════════════ -->
-<section data-background-color="#060A12" data-id="014">
+<!-- ════════════════ {015} BAD CONTENT ════════════════ -->
+<section data-background-color="#060A12" data-id="015">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{014}</span>
+    <span class="slide-tag">{015}</span>
     <div class="accent-line amber"></div>
     <h2 style="font-size:1.3em;">You Can't AI Your Way Out of Bad Content</h2>
     <div class="cols-2" style="margin-top:0.3em;align-items:start;">
       <div>
-        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+        <div style="border-left:3px solid #4A9EFF;padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(74,158,255,0.03);">
           <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Outdated content</strong> &mdash; Last reviewed 2019. AI cites every stale page confidently.</p>
         </div>
-        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+        <div style="border-left:3px solid #4A9EFF;padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(74,158,255,0.03);">
           <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Orphaned pages</strong> &mdash; Five CMS migrations deep. Nobody owns them.</p>
         </div>
-        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+        <div style="border-left:3px solid #4A9EFF;padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(74,158,255,0.03);">
           <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Org-chart IA</strong> &mdash; Built around departments, not citizen tasks.</p>
         </div>
-        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;background:rgba(255,77,77,0.03);">
+        <div style="border-left:3px solid #4A9EFF;padding:0.3em 0.7em;background:rgba(74,158,255,0.03);">
           <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Under-resourced</strong> &mdash; 1-2 people running an entire state portal.</p>
         </div>
       </div>
       <div style="display:flex;align-items:center;height:100%;">
-        <div style="background:rgba(255,77,77,0.04);border:1px solid rgba(255,77,77,0.15);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:0.8rem 1rem;">
+        <div style="background:rgba(74,158,255,0.04);border:1px solid rgba(74,158,255,0.15);border-left:3px solid #4A9EFF;border-radius:0 6px 6px 0;padding:0.8rem 1rem;">
           <p style="font-family:'Rajdhani',sans-serif;font-size:0.88em;font-weight:600;color:var(--text);line-height:1.4;margin:0;">
-            Bolt an LLM onto a broken content foundation and you get a <span style="color:var(--red);">confident, well-spoken wrong answer.</span>
+            Bolt an LLM onto a broken content foundation and you get a <span style="color:#4A9EFF;">confident, well-spoken wrong answer.</span>
           </p>
           <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.4em 0 0;">In government, that's a liability.</p>
         </div>
@@ -926,11 +956,11 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {015} FIX FOUNDATION ════════════════ -->
-<section data-background-color="#060A12" data-id="015">
+<!-- ════════════════ {016} FIX FOUNDATION ════════════════ -->
+<section data-background-color="#060A12" data-id="016">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{015}</span>
+    <span class="slide-tag">{016}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Fix Your Foundation</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">Preparing for long-term success in an AI-driven world</p>
@@ -954,11 +984,11 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {016} CHOOSE A PATH ════════════════ -->
-<section data-background-color="#060A12" data-id="016" id="choose-path">
+<!-- ════════════════ {017} CHOOSE A PATH ════════════════ -->
+<section data-background-color="#060A12" data-id="017" id="choose-path">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{016}</span>
+    <span class="slide-tag">{017}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Choose a Path</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">A map, not a prescription.</p>
@@ -993,11 +1023,11 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {017} PATH 1 ════════════════ -->
-<section data-background-color="#060A12" data-id="017">
+<!-- ════════════════ {018} PATH 1 ════════════════ -->
+<section data-background-color="#060A12" data-id="018">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{017}</span>
+    <span class="slide-tag">{018}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.3em;">Path 1 &mdash; Purpose-Built SaaS</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">e.g. Cludo, Coveo, and other up-and-comers</p>
@@ -1005,7 +1035,7 @@ blockquote {
       <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
         <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 &amp; 4 capable now</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov-specific features, analytics, admin UI</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">No internal dev capacity needed</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Supported and maintained</li></ul>
       </div>
-      <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+      <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
         <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Expensive &mdash; enterprise subscription pricing</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Crawler-based &mdash; not tied to your Drupal content</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Data sovereignty &mdash; where do citizen queries go?</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Vendor lock-in &mdash; switching is painful</li></ul>
       </div>
     </div>
@@ -1014,11 +1044,11 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {018} PATH 2 ════════════════ -->
-<section data-background-color="#060A12" data-id="018">
+<!-- ════════════════ {019} PATH 2 ════════════════ -->
+<section data-background-color="#060A12" data-id="019">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{018}</span>
+    <span class="slide-tag">{019}</span>
     <div class="accent-line amber"></div>
     <h2 style="font-size:1.3em;">Path 2 &mdash; You May Already Have It</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Microsoft Azure &middot; Google Vertex AI &middot; AWS</p>
@@ -1026,7 +1056,7 @@ blockquote {
       <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
         <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Likely inside your existing enterprise agreement</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">FedRAMP authorized &mdash; procurement done</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Drupal integration paths exist for all three</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 capable with proper configuration</li></ul>
       </div>
-      <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+      <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
         <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Not turnkey &mdash; requires real config and dev work</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov IT may own the contract &mdash; web team needs access</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Still requires the same content foundation work</li></ul>
       </div>
     </div>
@@ -1038,11 +1068,11 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {019} PATH 3 ════════════════ -->
-<section data-background-color="#060A12" data-id="019">
+<!-- ════════════════ {020} PATH 3 ════════════════ -->
+<section data-background-color="#060A12" data-id="020">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{019}</span>
+    <span class="slide-tag">{020}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.3em;">Path 3 &mdash; Build Drupal-Native</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Drupal AI + Search API + Vector DB + LLM</p>
@@ -1051,7 +1081,7 @@ blockquote {
         <div class="compare good" style="padding:0.5rem 0.7rem;margin-bottom:0.4em;"><span class="label good">Pros</span>
           <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">You own the architecture and the data</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Tightly coupled to structured Drupal content</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">No vendor lock-in &mdash; swap LLM providers</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Lowest long-term cost, highest control</li></ul>
         </div>
-        <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+        <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
           <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Requires capable Drupal team + AI expertise</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Middleware layer: chunking, embedding, pipeline</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Ecosystem still maturing &mdash; you own maintenance</li></ul>
         </div>
       </div>
@@ -1086,32 +1116,32 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {020} CONTENT FOUNDATION ════════════════ -->
-<section data-background-color="#060A12" data-id="020">
+<!-- ════════════════ {021} CONTENT FOUNDATION ════════════════ -->
+<section data-background-color="#060A12" data-id="021">
   <div class="slide-watermark wm-center"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc" style="align-items:center;text-align:center;">
-    <span class="slide-tag">{020}</span>
+    <span class="slide-tag">{021}</span>
     <div class="accent-line amber" style="margin:0 auto 0.4em;"></div>
     <h2 style="font-size:1.3em;text-align:center;">The Content Foundation Requirement</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--amber);margin:0.2em 0 0.8em;">Whichever path you choose:</p>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--accent);margin:0.2em 0 0.8em;">Whichever path you choose:</p>
     <p style="font-family:'Rajdhani',sans-serif;font-size:1.15em;font-weight:600;line-height:1.8;text-align:center;max-width:80%;margin:0 auto;">
       Your content has to be <span style="color:var(--accent);">current</span>.<br>
       Your content has to be <span style="color:var(--accent);">structured</span>.<br>
       Your content has to be <span style="color:var(--accent);">governed</span>.
     </p>
     <p style="color:var(--muted);font-style:italic;font-size:0.72em;text-align:center;max-width:70%;margin:0.8em auto 0;">
-      AI doesn't fix bad content.<br>It retrieves it. Generates from it. Cites it. <span style="color:var(--red);">Confidently.</span>
+      AI doesn't fix bad content.<br>It retrieves it. Generates from it. Cites it. <span style="color:#4A9EFF;">Confidently.</span>
     </p>
   </div>
   <aside class="notes">This is the point worth repeating. Every vendor will tell you their platform handles content quality — none of them do. The content work is yours regardless of path.</aside>
 </section>
 
 
-<!-- ════════════════ {021} DON'T PANIC ════════════════ -->
-<section data-background-color="#060A12" data-id="021">
+<!-- ════════════════ {022} DON'T PANIC ════════════════ -->
+<section data-background-color="#060A12" data-id="022">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{021}</span>
+    <span class="slide-tag">{022}</span>
     <div class="accent-line"></div>
     <h2 style="font-size:1.4em;">Don't Panic</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">Where government actually is right now.</p>
@@ -1125,8 +1155,8 @@ blockquote {
         <span class="stat-label" style="margin-top:0.2em;">of state gov employees using GenAI</span>
         <span class="stat-context">Almost entirely internal</span>
       </div>
-      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(255,77,77,0.12);border-radius:6px;">
-        <span class="stat-number" style="font-size:2.6em;color:var(--red);">~0</span>
+      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(74,158,255,0.12);border-radius:6px;">
+        <span class="stat-number" style="font-size:2.6em;color:#4A9EFF;">~0</span>
         <span class="stat-label" style="margin-top:0.2em;">citizen-facing grounded AI search at scale in US gov</span>
       </div>
     </div>
@@ -1138,8 +1168,9 @@ blockquote {
 </section>
 
 
-<!-- ════════════════ {022} CLOSING ════════════════ -->
-<section data-background-color="#060A12" data-id="022">
+<!-- ════════════════ {023} CLOSING ════════════════ -->
+<section data-background-color="#060A12" data-id="023">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <span class="motif-bg pos-br"><img src="assets/ec-bolt.svg" alt=""></span>
   <div class="split">
     <div class="split-visual" style="background:var(--panel2);">
@@ -1156,7 +1187,7 @@ blockquote {
       </div>
     </div>
     <div class="split-content">
-      <span class="slide-tag">{022}</span>
+      <span class="slide-tag">{023}</span>
       <div class="accent-line"></div>
       <h2 class="glow" style="font-size:2em;">Let's Talk</h2>
       <p style="color:var(--muted);font-style:italic;font-size:0.72em;max-width:90%;margin-bottom:0.5em;">
