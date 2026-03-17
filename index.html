@@ -189,7 +189,7 @@ blockquote {
 .agenda-title { font-family: 'Source Serif 4', serif; font-size: 0.78em; color: var(--text); }
 .agenda-bar { font-family: 'Fira Code', monospace; font-size: 0.5em; display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
 .agenda-bar-item { color: var(--muted); opacity: 0.4; }
-.agenda-bar-item.active { color: var(--cyan); opacity: 1; }
+.agenda-bar-item.active { color: var(--dark); background: var(--accent); padding: 0.15em 0.45em; border-radius: 3px; opacity: 1; font-weight: 500; }
 .agenda-bar-item.done { color: var(--muted); opacity: 0.6; text-decoration: line-through; }
 .agenda-bar-sep { color: var(--muted); opacity: 0.25; }
 
@@ -288,15 +288,14 @@ blockquote {
   <div class="title-deco"><img src="assets/2022-ec-logo-icon-only.svg" alt=""></div>
 
   <div class="vc">
-    <div class="title-meta">DRUPALCON CHICAGO &mdash; GOV SUMMIT</div>
+    <div class="title-meta">DRUPALCON CHICAGO &mdash; GOV SUMMIT &mdash; MARCH 2026</div>
     <h1 style="font-size:2.2em;line-height:1;margin-bottom:0.1em;">AI Search</h1>
     <h2 style="font-size:1.1em;color:var(--accent);margin-bottom:0.2em;font-weight:700;">for Humans in Government</h2>
     <p style="font-family:'Source Serif 4',serif;font-size:0.8em;color:var(--muted);font-style:italic;margin:0.1em 0 0.4em;">A Practical Guide</p>
     <div style="width:50px;height:3px;background:linear-gradient(90deg,var(--accent),var(--amber));margin-bottom:0.4em;"></div>
     <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);margin:0;">Dan Moriarty &amp; Tim Broeker &mdash; Electric Citizen</p>
     <div class="title-stats">
-      <span>23 slides</span>
-      <span>~22 min</span>
+      <span>~25 min</span>
     </div>
   </div>
 
@@ -312,7 +311,7 @@ blockquote {
         <span class="slide-tag">{001}</span>
         <div class="accent-line"></div>
         <h2 style="font-size:1.5em;">Welcome!</h2>
-        <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--accent);margin:0.1em 0 0.5em;">Enterprise Drupal &middot; 15 Years in State &amp; Local Gov</p>
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--accent);margin:0.1em 0 0.5em;">15 Years in State &amp; Local Gov</p>
         <div style="display:flex;flex-direction:column;gap:0.2em;">
           <div style="border-left:3px solid var(--accent);padding:0.15em 0.6em;background:rgba(170,255,0,0.03);">
             <span style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;color:var(--text);">State Government</span>
@@ -354,19 +353,15 @@ blockquote {
     <div class="agenda" style="margin-top:0.4em;">
       <div class="agenda-item active">
         <span class="agenda-num">01</span>
-        <span class="agenda-title">The Problem &mdash; why gov search is stuck in 2006</span>
+        <span class="agenda-title">The Problem &mdash; AI is rapidly changing what search means</span>
       </div>
       <div class="agenda-item active">
         <span class="agenda-num">02</span>
-        <span class="agenda-title">Defining AI Search &mdash; a shared vocabulary</span>
+        <span class="agenda-title">Understanding AI Search &mdash; a vocabulary and a map</span>
       </div>
       <div class="agenda-item active">
         <span class="agenda-num">03</span>
-        <span class="agenda-title">The 5 Stages &mdash; where you are and where you're going</span>
-      </div>
-      <div class="agenda-item active">
-        <span class="agenda-num">04</span>
-        <span class="agenda-title">Getting There &mdash; barriers, foundations, and paths</span>
+        <span class="agenda-title">Getting There &mdash; barriers, foundations, and paths forward</span>
       </div>
     </div>
   </div>
@@ -472,7 +467,7 @@ blockquote {
   <div class="vc">
     <span class="section-label">Section 02</span>
     <h1 style="font-size:3em;color:var(--cyan);line-height:1;">What Now?</h1>
-    <p class="divider-desc">Let's get on the same page.<br>What even is AI Search? A chatbot?<br>How do we get from here to there?</p>
+    <p class="divider-desc">Let's get on the same page.<br>What even is AI Search? A chatbot?</p>
   </div>
   <aside class="notes">We know gov search is tough and stuck in the past. And there is a real cost to not getting better — trust and financial. How do we get from here to there?</aside>
 </section>
@@ -533,7 +528,7 @@ blockquote {
     <h2 style="font-size:1.8em;text-align:center;">Let's Build a <span style="color:var(--accent);">Map</span></h2>
     <div style="margin:0.8em auto 0;max-width:65%;">
       <p style="font-family:'Rajdhani',sans-serif;font-size:1em;font-weight:500;color:var(--muted);text-align:center;line-height:1.5;margin:0;">
-        Five stages. Each one builds on the last.
+        Five stages of search. Each one builds on the last.
       </p>
     </div>
     <div style="display:flex;align-items:center;gap:0.4em;margin-top:1.2em;">
@@ -839,18 +834,18 @@ blockquote {
 <!-- ════════════════ {013} STAGE 5 ════════════════ -->
 <section data-background-color="#060A12" data-id="013">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
-  <div class="vc">
-    <div class="agenda-bar">
-      <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
-      <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
-      <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
-      <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
-      <span class="agenda-bar-item active">Stage 5</span>
-    </div>
-    <span class="slide-tag">{013}</span>
-    <div class="accent-line"></div>
-    <h2 style="font-size:1.4em;">Agentic AI</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">You describe a goal. It acts.</p>
+  <div class="agenda-bar">
+    <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
+    <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
+    <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
+    <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
+    <span class="agenda-bar-item active">Stage 5</span>
+  </div>
+  <span class="slide-tag">{013}</span>
+  <div class="accent-line"></div>
+  <h2 style="font-size:1.4em;">Agentic AI</h2>
+  <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">You describe a goal. It acts.</p>
+  <div>
     <div class="cols-2" style="align-items:start;">
       <div>
         <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
@@ -868,35 +863,35 @@ blockquote {
       </div>
       <div>
         <!-- Goal -->
-        <div style="background:rgba(170,255,0,0.08);border:1.5px solid var(--accent);border-radius:6px;padding:0.3em 0.6em;text-align:center;margin-bottom:0.15em;">
-          <span style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--accent);">"Renew my contractor license"</span>
+        <div style="background:rgba(170,255,0,0.08);border:1.5px solid var(--accent);border-radius:5px;padding:0.2em 0.5em;text-align:center;margin-bottom:0.1em;">
+          <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--accent);">"Renew my contractor license"</span>
         </div>
-        <div style="text-align:center;color:var(--muted);font-size:0.6em;line-height:1;">&#9660;</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
         <!-- Steps row 1 -->
-        <div style="display:flex;gap:0.4em;margin-bottom:0.15em;">
-          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.25em 0.4em;text-align:center;">
-            <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);">Check eligibility</span>
+        <div style="display:flex;gap:0.3em;margin-bottom:0.1em;">
+          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.18em 0.3em;text-align:center;">
+            <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);">Check eligibility</span>
           </div>
-          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.25em 0.4em;text-align:center;">
-            <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);">Verify CE credits</span>
+          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.18em 0.3em;text-align:center;">
+            <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);">Verify CE credits</span>
           </div>
         </div>
-        <div style="text-align:center;color:var(--muted);font-size:0.6em;line-height:1;">&#9660;</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
         <!-- Steps row 2 -->
-        <div style="display:flex;gap:0.4em;margin-bottom:0.15em;">
-          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.25em 0.4em;text-align:center;">
-            <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);">Pre-fill form BC-100</span>
+        <div style="display:flex;gap:0.3em;margin-bottom:0.1em;">
+          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.18em 0.3em;text-align:center;">
+            <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);">Pre-fill form BC-100</span>
           </div>
-          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.25em 0.4em;text-align:center;">
-            <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);">Process payment</span>
+          <div style="flex:1;background:var(--panel2);border:1px solid rgba(170,255,0,0.12);border-radius:4px;padding:0.18em 0.3em;text-align:center;">
+            <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);">Process payment</span>
           </div>
         </div>
-        <div style="text-align:center;color:var(--muted);font-size:0.6em;line-height:1;">&#9660;</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
         <!-- Resolution -->
-        <div style="background:rgba(255,176,32,0.06);border:1.5px solid var(--amber);border-radius:6px;padding:0.3em 0.6em;text-align:center;margin-bottom:0.25em;">
-          <span style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);">License renewed. Confirmation sent.</span>
+        <div style="background:rgba(255,176,32,0.06);border:1.5px solid var(--amber);border-radius:5px;padding:0.2em 0.5em;text-align:center;">
+          <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--amber);">License renewed. Confirmation sent.</span>
         </div>
-        <p style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--muted);text-align:center;margin:0;opacity:0.5;">GOAL &rarr; STEPS &rarr; RESOLUTION</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.35em;color:var(--muted);text-align:center;margin:0.15em 0 0;opacity:0.5;">GOAL &rarr; STEPS &rarr; RESOLUTION</p>
       </div>
     </div>
   </div>
@@ -1051,30 +1046,33 @@ blockquote {
   <div class="vc">
     <span class="slide-tag">{017}</span>
     <div class="accent-line"></div>
-    <h2 style="font-size:1.4em;">Choose a Path</h2>
+    <h2 style="font-size:1.4em;">Choosing a Path Forward</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">A map, not a prescription.</p>
+    <!-- Invisible fragment triggers -->
+    <span class="fragment path-trigger" data-fragment-index="0" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></span>
+    <span class="fragment path-trigger" data-fragment-index="1" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></span>
     <div class="cols-3" style="gap:0.8em;" id="path-cards">
-      <!-- Card 1: visible on load, dims on advance -->
-      <div class="panel path-card" id="pc1" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);">
+      <!-- Card 1 -->
+      <div class="panel path-card" id="pc1" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);transition:opacity 0.5s ease, filter 0.5s ease;">
         <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">1</span>
         <div class="panel-label" style="color:var(--accent);">Purpose-Built SaaS</div>
-        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Cludo, Coveo</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:#4A9EFF;margin:0.25em 0;">Cludo, Coveo</p>
         <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Stage 3 &amp; 4 today. Gov-specific features. No dev team required.</p>
         <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Fastest to deploy</p>
       </div>
-      <!-- Card 2: hidden, reveals on first advance -->
-      <div class="panel path-card reveal-card fragment" data-fragment-index="0" id="pc2" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--amber);background:rgba(255,176,32,0.04);border-color:rgba(255,176,32,0.25);">
-        <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--amber);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">2</span>
-        <div class="panel-label" style="color:var(--amber);">Enterprise Platform</div>
-        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Azure &middot; Vertex &middot; AWS</p>
+      <!-- Card 2 -->
+      <div class="panel path-card" id="pc2" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);opacity:0.2;filter:blur(2px);transition:opacity 0.5s ease, filter 0.5s ease;">
+        <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">2</span>
+        <div class="panel-label" style="color:var(--accent);">Enterprise Platform</div>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:#4A9EFF;margin:0.25em 0;">Azure &middot; Vertex &middot; AWS</p>
         <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Inside your enterprise agreement. FedRAMP authorized. Drupal integration paths exist.</p>
         <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Most underused option</p>
       </div>
-      <!-- Card 3: hidden, reveals on second advance -->
-      <div class="panel path-card reveal-card fragment" data-fragment-index="1" id="pc3" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);">
+      <!-- Card 3 -->
+      <div class="panel path-card" id="pc3" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);opacity:0.2;filter:blur(2px);transition:opacity 0.5s ease, filter 0.5s ease;">
         <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">3</span>
         <div class="panel-label" style="color:var(--accent);">Build Drupal-Native</div>
-        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Drupal AI + Search API + Vector DB</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:#4A9EFF;margin:0.25em 0;">Drupal AI + Search API + Vector DB</p>
         <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Own your architecture. Own your data. No vendor lock-in. Swap LLM providers freely.</p>
         <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Most control, most investment</p>
       </div>
@@ -1088,16 +1086,27 @@ blockquote {
 <section data-background-color="#060A12" data-id="018">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{018}</span>
+    <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.15em;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--dark);background:var(--accent);padding:0.2em 0.6em;border-radius:3px;font-weight:500;letter-spacing:0.1em;">PATH 1</span>
+      <span class="slide-tag" style="margin:0;">{018}</span>
+    </div>
     <div class="accent-line"></div>
-    <h2 style="font-size:1.3em;">Path 1 &mdash; Purpose-Built SaaS</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">e.g. Cludo, Coveo, and other up-and-comers</p>
-    <div class="cols-2" style="gap:0.8em;">
-      <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
-        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 &amp; 4 capable now</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov-specific features, analytics, admin UI</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">No internal dev capacity needed</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Supported and maintained</li></ul>
+    <h2 style="font-size:1.4em;">Purpose-Built SaaS</h2>
+    <p style="font-family:'Fira Code',monospace;font-size:0.55em;color:#4A9EFF;margin:0.1em 0 0.5em;">Cludo &middot; Coveo &middot; and other up-and-comers</p>
+    <div class="cols-2" style="gap:1em;align-items:start;">
+      <div>
+        <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:0.3em;">WHAT YOU GET</span>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text"><strong>Stage 3 &amp; 4 capable now</strong></span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">Gov-specific features, analytics, admin UI</span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">No internal dev capacity needed</span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">Supported and maintained</span></div>
       </div>
-      <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
-        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Expensive &mdash; enterprise subscription pricing</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Crawler-based &mdash; not tied to your Drupal content</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Data sovereignty &mdash; where do citizen queries go?</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Vendor lock-in &mdash; switching is painful</li></ul>
+      <div>
+        <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:#4A9EFF;letter-spacing:0.1em;display:block;margin-bottom:0.3em;">WATCH FOR</span>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Enterprise subscription pricing</span></div>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Crawler-based &mdash; not tied to Drupal content</span></div>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Data sovereignty &mdash; where do queries go?</span></div>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Vendor lock-in</span></div>
       </div>
     </div>
   </div>
@@ -1109,20 +1118,31 @@ blockquote {
 <section data-background-color="#060A12" data-id="019">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
   <div class="vc">
-    <span class="slide-tag">{019}</span>
-    <div class="accent-line amber"></div>
-    <h2 style="font-size:1.3em;">Path 2 &mdash; You May Already Have It</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Microsoft Azure &middot; Google Vertex AI &middot; AWS</p>
-    <div class="cols-2" style="gap:0.8em;">
-      <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
-        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Likely inside your existing enterprise agreement</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">FedRAMP authorized &mdash; procurement done</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Drupal integration paths exist for all three</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 capable with proper configuration</li></ul>
+    <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.15em;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--dark);background:var(--accent);padding:0.2em 0.6em;border-radius:3px;font-weight:500;letter-spacing:0.1em;">PATH 2</span>
+      <span class="slide-tag" style="margin:0;">{019}</span>
+    </div>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">You May Already Have It</h2>
+    <p style="font-family:'Fira Code',monospace;font-size:0.55em;color:#4A9EFF;margin:0.1em 0 0.5em;">Microsoft Azure &middot; Google Vertex AI &middot; AWS</p>
+    <div class="cols-2" style="gap:1em;align-items:start;">
+      <div>
+        <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:0.3em;">WHAT YOU GET</span>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text"><strong>Already in your enterprise agreement</strong></span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">FedRAMP authorized &mdash; procurement done</span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">Drupal integration paths exist for all three</span></div>
+        <div class="key-item"><span class="key-num">&#10003;</span><span class="key-text">Stage 3 capable with proper configuration</span></div>
       </div>
-      <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
-        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Not turnkey &mdash; requires real config and dev work</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov IT may own the contract &mdash; web team needs access</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Still requires the same content foundation work</li></ul>
+      <div>
+        <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:#4A9EFF;letter-spacing:0.1em;display:block;margin-bottom:0.3em;">WATCH FOR</span>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Not turnkey &mdash; requires config and dev work</span></div>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Gov IT may own the contract &mdash; web team needs access</span></div>
+        <div class="key-item"><span class="key-num" style="color:#4A9EFF;">&#9888;</span><span class="key-text">Same content foundation work required</span></div>
       </div>
     </div>
-    <div style="margin-top:0.3em;padding:0.35em 0.8em;background:rgba(255,176,32,0.04);border:1px solid rgba(255,176,32,0.15);border-radius:4px;">
-      <p style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;margin:0;color:var(--amber);">Ask your IT department before signing a new vendor contract. You may already be paying for this.</p>
+    <div style="margin-top:0.4em;padding:0.35em 0.8em;background:rgba(74,158,255,0.06);border:1px solid rgba(74,158,255,0.2);border-radius:4px;display:flex;align-items:center;gap:0.5em;">
+      <span style="font-size:0.65em;">&#128161;</span>
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;margin:0;color:#4A9EFF;">Ask your IT department before signing a new vendor contract.</p>
     </div>
   </div>
   <aside class="notes">Azure AI Search has a Search API module for Drupal. Google Vertex AI Search also has one. The middle path is most underused because web teams don't know what's in their agency's enterprise agreements.</aside>
@@ -1132,44 +1152,47 @@ blockquote {
 <!-- ════════════════ {020} PATH 3 ════════════════ -->
 <section data-background-color="#060A12" data-id="020">
   <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
-  <div class="vc">
-    <span class="slide-tag">{020}</span>
-    <div class="accent-line"></div>
-    <h2 style="font-size:1.3em;">Path 3 &mdash; Build Drupal-Native</h2>
-    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Drupal AI + Search API + Vector DB + LLM</p>
-    <div class="cols-2" style="gap:0.8em;align-items:start;">
-      <div>
-        <div class="compare good" style="padding:0.5rem 0.7rem;margin-bottom:0.4em;"><span class="label good">Pros</span>
-          <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">You own the architecture and the data</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Tightly coupled to structured Drupal content</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">No vendor lock-in &mdash; swap LLM providers</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Lowest long-term cost, highest control</li></ul>
-        </div>
-        <div class="compare bad" style="padding:0.5rem 0.7rem;border-left-color:#4A9EFF;"><span class="label bad" style="color:#4A9EFF;">Cons</span>
-          <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Requires capable Drupal team + AI expertise</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Middleware layer: chunking, embedding, pipeline</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Ecosystem still maturing &mdash; you own maintenance</li></ul>
-        </div>
+  <div style="display:flex;align-items:center;gap:0.6em;margin-bottom:0.1em;">
+    <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--dark);background:var(--accent);padding:0.2em 0.6em;border-radius:3px;font-weight:500;letter-spacing:0.1em;">PATH 3</span>
+    <span class="slide-tag" style="margin:0;">{020}</span>
+  </div>
+  <div class="accent-line"></div>
+  <h2 style="font-size:1.3em;">Build Drupal-Native</h2>
+  <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:#4A9EFF;margin:0.05em 0 0.3em;">Drupal AI + Search API + Vector DB + LLM</p>
+  <div class="cols-2" style="gap:0.8em;align-items:start;">
+    <div>
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:0.2em;">WHAT YOU GET</span>
+      <div class="key-item" style="padding:0.15em 0;"><span class="key-num" style="font-size:1em;">&#10003;</span><span class="key-text" style="font-size:0.62em;"><strong>Own the architecture and the data</strong></span></div>
+      <div class="key-item" style="padding:0.15em 0;"><span class="key-num" style="font-size:1em;">&#10003;</span><span class="key-text" style="font-size:0.62em;">Tightly coupled to structured Drupal content</span></div>
+      <div class="key-item" style="padding:0.15em 0;"><span class="key-num" style="font-size:1em;">&#10003;</span><span class="key-text" style="font-size:0.62em;">No vendor lock-in &mdash; swap LLM providers</span></div>
+      <div class="key-item" style="padding:0.15em 0;"><span class="key-num" style="font-size:1em;">&#10003;</span><span class="key-text" style="font-size:0.62em;">Lowest long-term cost, highest control</span></div>
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:#4A9EFF;letter-spacing:0.1em;display:block;margin:0.25em 0 0.2em;">WATCH FOR</span>
+      <div class="key-item" style="padding:0.15em 0;"><span class="key-num" style="font-size:1em;color:#4A9EFF;">&#9888;</span><span class="key-text" style="font-size:0.62em;">Requires Drupal team + AI expertise</span></div>
+      <div class="key-item" style="padding:0.15em 0;border-bottom:none;"><span class="key-num" style="font-size:1em;color:#4A9EFF;">&#9888;</span><span class="key-text" style="font-size:0.62em;">Ecosystem still maturing &mdash; you own it</span></div>
+    </div>
+    <div>
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--muted);letter-spacing:0.1em;display:block;margin-bottom:0.2em;">THE STACK</span>
+      <div style="background:rgba(170,255,0,0.08);border:1.5px solid var(--accent);border-radius:5px;padding:0.2em 0.5em;text-align:center;margin-bottom:0.1em;">
+        <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--accent);">Citizen Question</span>
       </div>
-      <div>
-        <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;margin:0 auto;display:block;">
-          <rect x="40" y="5" width="180" height="28" rx="4" fill="rgba(170,255,0,0.06)" stroke="#AAFF00" stroke-width="1.5"/>
-          <text x="130" y="23" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="9">Citizen Question</text>
-          <line x1="130" y1="33" x2="130" y2="47" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
-          <polygon points="130,51 126,44 134,44" fill="#7A9BBF" opacity="0.4"/>
-          <rect x="20" y="55" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(170,255,0,0.2)" stroke-width="1.5"/>
-          <text x="130" y="70" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="10" font-weight="600">Drupal + Search API</text>
-          <text x="130" y="82" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Structured content, taxonomies</text>
-          <line x1="130" y1="87" x2="130" y2="101" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
-          <polygon points="130,105 126,98 134,98" fill="#7A9BBF" opacity="0.4"/>
-          <rect x="20" y="109" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(255,176,32,0.2)" stroke-width="1.5"/>
-          <text x="130" y="124" text-anchor="middle" fill="#FFB020" font-family="monospace" font-size="10" font-weight="600">Vector Database</text>
-          <text x="130" y="136" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Embeddings, semantic retrieval</text>
-          <line x1="130" y1="141" x2="130" y2="155" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
-          <polygon points="130,159 126,152 134,152" fill="#7A9BBF" opacity="0.4"/>
-          <rect x="20" y="163" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(255,176,32,0.15)" stroke-width="1.5"/>
-          <text x="130" y="178" text-anchor="middle" fill="#FFB020" font-family="monospace" font-size="10" font-weight="600">LLM (Any Provider)</text>
-          <text x="130" y="190" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Azure, Google, Anthropic, OpenAI...</text>
-          <line x1="130" y1="195" x2="130" y2="209" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
-          <polygon points="130,213 126,206 134,206" fill="#7A9BBF" opacity="0.4"/>
-          <rect x="40" y="217" width="180" height="28" rx="4" fill="rgba(170,255,0,0.06)" stroke="#AAFF00" stroke-width="1.5"/>
-          <text x="130" y="235" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="9">Grounded Answer + Citations</text>
-        </svg>
+      <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
+      <div style="background:var(--panel2);border:1.5px solid rgba(170,255,0,0.2);border-radius:4px;padding:0.2em 0.5em;text-align:center;margin-bottom:0.1em;">
+        <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--accent);font-weight:600;">Drupal + Search API</span>
+        <span style="font-family:'Fira Code',monospace;font-size:0.35em;color:var(--muted);display:block;">Structured content, taxonomies</span>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
+      <div style="background:var(--panel2);border:1.5px solid rgba(74,158,255,0.2);border-radius:4px;padding:0.2em 0.5em;text-align:center;margin-bottom:0.1em;">
+        <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:#4A9EFF;font-weight:600;">Vector Database</span>
+        <span style="font-family:'Fira Code',monospace;font-size:0.35em;color:var(--muted);display:block;">Embeddings, semantic retrieval</span>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
+      <div style="background:var(--panel2);border:1.5px solid rgba(74,158,255,0.15);border-radius:4px;padding:0.2em 0.5em;text-align:center;margin-bottom:0.1em;">
+        <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:#4A9EFF;font-weight:600;">LLM (Any Provider)</span>
+        <span style="font-family:'Fira Code',monospace;font-size:0.35em;color:var(--muted);display:block;">Azure, Google, Anthropic, OpenAI...</span>
+      </div>
+      <div style="text-align:center;color:var(--muted);font-size:0.5em;line-height:0.8;">&#9660;</div>
+      <div style="background:rgba(170,255,0,0.08);border:1.5px solid var(--accent);border-radius:5px;padding:0.2em 0.5em;text-align:center;">
+        <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--accent);">Grounded Answer + Citations</span>
       </div>
     </div>
   </div>
@@ -1190,9 +1213,9 @@ blockquote {
       Your content has to be <span style="color:var(--accent);">structured</span>.<br>
       Your content has to be <span style="color:var(--accent);">governed</span>.
     </p>
-    <p style="color:var(--muted);font-style:italic;font-size:0.72em;text-align:center;max-width:70%;margin:0.8em auto 0;">
-      AI doesn't fix bad content.<br>It retrieves it. Generates from it. Cites it. <span style="color:#4A9EFF;">Confidently.</span>
-    </p>
+    <div style="margin-top:0.8em;padding:0.35em 0.8em;background:rgba(170,255,0,0.04);border:1px solid rgba(170,255,0,0.15);border-radius:4px;max-width:80%;">
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;margin:0;color:var(--muted);text-align:center;">AI doesn't fix bad content. It retrieves it. Generates from it. Cites it. <span style="color:#4A9EFF;">Confidently.</span></p>
+    </div>
   </div>
   <aside class="notes">This is the point worth repeating. Every vendor will tell you their platform handles content quality — none of them do. The content work is yours regardless of path.</aside>
 </section>
@@ -1204,17 +1227,17 @@ blockquote {
   <div class="vc">
     <span class="slide-tag">{022}</span>
     <div class="accent-line"></div>
-    <h2 style="font-size:1.4em;">Don't Panic</h2>
+    <h2 style="font-size:1.4em;">Don't Panic!</h2>
     <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">Where government actually is right now.</p>
     <div class="cols-3" style="margin-top:0.1em;gap:1em;">
-      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid var(--border);border-radius:6px;">
-        <span class="stat-number" style="font-size:2.6em;">24%</span>
-        <span class="stat-label" style="margin-top:0.2em;">of state CIOs have data governance frameworks for GenAI</span>
-      </div>
       <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(255,176,32,0.15);border-radius:6px;">
         <span class="stat-number" style="font-size:2.6em;color:var(--amber);">82%</span>
         <span class="stat-label" style="margin-top:0.2em;">of state gov employees using GenAI</span>
-        <span class="stat-context">Almost entirely internal</span>
+        <span class="stat-context" style="color:var(--accent);">Almost entirely internal</span>
+      </div>
+      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid var(--border);border-radius:6px;">
+        <span class="stat-number" style="font-size:2.6em;">24%</span>
+        <span class="stat-label" style="margin-top:0.2em;">of state CIOs have data governance frameworks for GenAI</span>
       </div>
       <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(74,158,255,0.12);border-radius:6px;">
         <span class="stat-number" style="font-size:2.6em;color:#4A9EFF;">~0</span>
@@ -1224,45 +1247,86 @@ blockquote {
     <div style="margin-top:0.4em;padding:0.35em 0.8em;background:rgba(170,255,0,0.04);border:1px solid rgba(170,255,0,0.15);border-radius:4px;">
       <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;margin:0;color:var(--muted);">Most states are "developing" and prototyping across all AI readiness categories. The ones who look "behind" are often just being responsible.</p>
     </div>
+    <p style="font-family:'Fira Code',monospace;font-size:0.38em;color:var(--muted);margin-top:0.4em;opacity:0.6;">Sources: NASCIO 2025 State CIO Survey &middot; Code for America Government AI Landscape Assessment (2025)</p>
   </div>
-  <aside class="notes">82% sounds impressive — it means drafting emails and summarizing documents. Utah and Indiana are moving carefully, keeping AI internal until ready. Source: Code for America AI Landscape Assessment.</aside>
+  <aside class="notes">82% sounds impressive — it means drafting emails and summarizing documents. Utah and Indiana are moving carefully, keeping AI internal until ready. Sources: NASCIO 2025 State CIO Survey; Code for America Government AI Landscape Assessment (2025).</aside>
 </section>
 
 
 <!-- ════════════════ {023} CLOSING ════════════════ -->
 <section data-background-color="#060A12" data-id="023">
-  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
-  <span class="motif-bg pos-br"><img src="assets/ec-bolt.svg" alt=""></span>
-  <div class="split">
-    <div class="split-visual" style="background:var(--panel2);">
-      <img src="assets/2022-ec-logo-icon-only.svg" alt="Electric Citizen" style="width:140px;height:auto;opacity:0.85;">
-      <div style="margin-top:1rem;text-align:center;">
-        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--muted);margin:0;">Dan Moriarty &mdash; Co-founder</p>
-        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--muted);margin:0.15em 0;">Tim Broeker &mdash; Co-founder</p>
+  <span class="motif-bg pos-tr"><img src="assets/ec-bolt.svg" alt=""></span>
+  <div class="title-deco"><img src="assets/2022-ec-logo-icon-only.svg" alt=""></div>
+
+  <div class="vc">
+    <div class="title-meta">DRUPALCON CHICAGO &mdash; GOV SUMMIT &mdash; MARCH 2026</div>
+    <h1 style="font-size:2.2em;line-height:1;margin-bottom:0.1em;" class="glow">Let's Talk</h1>
+    <p style="font-family:'Source Serif 4',serif;font-size:0.8em;color:var(--muted);font-style:italic;margin:0.5em 0 0.15em;">
+      We've been working in state &amp; local government for 15 years.<br>Right now there is no more interesting moment to be doing it.
+    </p>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:600;color:var(--accent);margin:0.15em 0 0.5em;">
+      We'd love to hear your stories and see your prototypes.
+    </p>
+    <div style="width:50px;height:3px;background:linear-gradient(90deg,var(--accent),var(--amber));margin-bottom:0.6em;"></div>
+
+    <div style="display:flex;align-items:center;gap:1.5em;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:0.7rem 1rem;">
+      <!-- Logo box -->
+      <div style="background:var(--panel2);border-radius:6px;padding:0.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <img src="assets/2022-ec-logo-vertical-reversed-type.png" alt="Electric Citizen" style="width:70px;height:auto;opacity:0.9;">
       </div>
-      <div style="margin-top:1.2rem;text-align:center;">
-        <div style="width:100px;height:100px;border:2px dashed var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;margin:0 auto;">
-          <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--muted);text-align:center;">QR CODE<br>TBD</span>
-        </div>
-        <p style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--muted);margin-top:0.4em;">electriccitizen.com</p>
+      <!-- Info -->
+      <div style="flex:1;">
+        <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--text);margin:0 0 0.3em;">Dan Moriarty &amp; Tim Broeker</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin:0 0 0.3em;">Co-founders &mdash; Electric Citizen</p>
+        <a href="https://electriccitizen.com" style="font-family:'Fira Code',monospace;font-size:0.48em;">electriccitizen.com</a>
       </div>
-    </div>
-    <div class="split-content">
-      <span class="slide-tag">{023}</span>
-      <div class="accent-line"></div>
-      <h2 class="glow" style="font-size:2em;">Let's Talk</h2>
-      <p style="color:var(--muted);font-style:italic;font-size:0.72em;max-width:90%;margin-bottom:0.5em;">
-        We've been working in state &amp; local government for 15 years. Right now there is no more interesting moment to be doing it.
-      </p>
-      <div class="panel panel-amber" style="margin-bottom:0.4em;">
-        <div class="panel-label">Conversations We're Having</div>
-        <ul><li style="font-size:0.65em;">Getting foundations right &mdash; content audits, IA, governance</li><li style="font-size:0.65em;">Prototyping what comes next &mdash; grounded AI search pilots</li></ul>
-      </div>
-      <div class="closing-links">
-        <div class="closing-link">
-          <span class="closing-link-label">Web</span>
-          <a href="https://electriccitizen.com">electriccitizen.com</a>
-        </div>
+      <!-- QR -->
+      <div style="flex-shrink:0;text-align:center;">
+        <svg viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg" style="width:75px;height:75px;">
+          <rect width="75" height="75" rx="4" fill="#0D1526" stroke="rgba(170,255,0,0.15)" stroke-width="1.5"/>
+          <!-- Top-left finder -->
+          <rect x="5" y="5" width="21" height="21" rx="2" fill="none" stroke="#AAFF00" stroke-width="2.5"/>
+          <rect x="9" y="9" width="13" height="13" rx="1" fill="#AAFF00"/>
+          <!-- Top-right finder -->
+          <rect x="49" y="5" width="21" height="21" rx="2" fill="none" stroke="#AAFF00" stroke-width="2.5"/>
+          <rect x="53" y="9" width="13" height="13" rx="1" fill="#AAFF00"/>
+          <!-- Bottom-left finder -->
+          <rect x="5" y="49" width="21" height="21" rx="2" fill="none" stroke="#AAFF00" stroke-width="2.5"/>
+          <rect x="9" y="53" width="13" height="13" rx="1" fill="#AAFF00"/>
+          <!-- Data modules -->
+          <rect x="30" y="5" width="4" height="4" fill="#7A9BBF"/><rect x="38" y="5" width="4" height="4" fill="#AAFF00"/><rect x="34" y="9" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="30" y="13" width="4" height="4" fill="#AAFF00"/><rect x="42" y="13" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="34" y="17" width="4" height="4" fill="#7A9BBF"/><rect x="38" y="17" width="4" height="4" fill="#AAFF00"/>
+          <rect x="30" y="21" width="4" height="4" fill="#7A9BBF"/><rect x="42" y="21" width="4" height="4" fill="#AAFF00"/>
+          <rect x="5" y="30" width="4" height="4" fill="#AAFF00"/><rect x="13" y="30" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="21" y="30" width="4" height="4" fill="#AAFF00"/><rect x="30" y="30" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="38" y="30" width="4" height="4" fill="#AAFF00"/><rect x="46" y="30" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="54" y="30" width="4" height="4" fill="#AAFF00"/><rect x="62" y="30" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="9" y="34" width="4" height="4" fill="#7A9BBF"/><rect x="17" y="34" width="4" height="4" fill="#AAFF00"/>
+          <rect x="26" y="34" width="4" height="4" fill="#7A9BBF"/><rect x="34" y="34" width="4" height="4" fill="#AAFF00"/>
+          <rect x="42" y="34" width="4" height="4" fill="#7A9BBF"/><rect x="50" y="34" width="4" height="4" fill="#AAFF00"/>
+          <rect x="58" y="34" width="4" height="4" fill="#7A9BBF"/><rect x="66" y="34" width="4" height="4" fill="#AAFF00"/>
+          <rect x="5" y="38" width="4" height="4" fill="#7A9BBF"/><rect x="13" y="38" width="4" height="4" fill="#AAFF00"/>
+          <rect x="22" y="38" width="4" height="4" fill="#7A9BBF"/><rect x="30" y="38" width="4" height="4" fill="#AAFF00"/>
+          <rect x="38" y="38" width="4" height="4" fill="#7A9BBF"/><rect x="50" y="38" width="4" height="4" fill="#AAFF00"/>
+          <rect x="62" y="38" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="9" y="42" width="4" height="4" fill="#AAFF00"/><rect x="17" y="42" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="26" y="42" width="4" height="4" fill="#AAFF00"/><rect x="34" y="42" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="46" y="42" width="4" height="4" fill="#AAFF00"/><rect x="58" y="42" width="4" height="4" fill="#7A9BBF"/>
+          <!-- Bottom-right data -->
+          <rect x="30" y="49" width="4" height="4" fill="#AAFF00"/><rect x="38" y="49" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="50" y="49" width="4" height="4" fill="#AAFF00"/><rect x="58" y="49" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="66" y="49" width="4" height="4" fill="#AAFF00"/>
+          <rect x="34" y="53" width="4" height="4" fill="#7A9BBF"/><rect x="42" y="53" width="4" height="4" fill="#AAFF00"/>
+          <rect x="54" y="53" width="4" height="4" fill="#7A9BBF"/><rect x="62" y="53" width="4" height="4" fill="#AAFF00"/>
+          <rect x="30" y="57" width="4" height="4" fill="#AAFF00"/><rect x="38" y="57" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="46" y="57" width="4" height="4" fill="#AAFF00"/><rect x="58" y="57" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="66" y="57" width="4" height="4" fill="#AAFF00"/>
+          <rect x="34" y="61" width="4" height="4" fill="#7A9BBF"/><rect x="42" y="61" width="4" height="4" fill="#AAFF00"/>
+          <rect x="50" y="61" width="4" height="4" fill="#7A9BBF"/><rect x="62" y="61" width="4" height="4" fill="#AAFF00"/>
+          <rect x="30" y="66" width="4" height="4" fill="#AAFF00"/><rect x="38" y="66" width="4" height="4" fill="#7A9BBF"/>
+          <rect x="50" y="66" width="4" height="4" fill="#AAFF00"/><rect x="58" y="66" width="4" height="4" fill="#7A9BBF"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -1283,43 +1347,34 @@ Reveal.initialize({
   plugins: [ RevealNotes, RevealHighlight ]
 });
 
-// Path card spotlight: highlight current, blur others
+// Path card spotlight
+function updatePathCards() {
+  var section = document.getElementById('choose-path');
+  if (!section) return;
+  var cards = section.querySelectorAll('.path-card');
+  var triggers = section.querySelectorAll('.path-trigger');
+  // Count how many triggers are visible (have class 'visible')
+  var shown = 0;
+  triggers.forEach(function(t) { if (t.classList.contains('visible')) shown++; });
+  // Card index = number of shown triggers (0=card1, 1=card2, 2=card3)
+  cards.forEach(function(c, i) {
+    if (i === shown) {
+      c.style.opacity = '1';
+      c.style.filter = 'none';
+    } else {
+      c.style.opacity = '0.2';
+      c.style.filter = 'blur(2px)';
+    }
+  });
+}
 Reveal.on('fragmentshown', function(e) {
-  var section = e.fragment.closest('section');
-  if (section && section.id === 'choose-path') {
-    var cards = section.querySelectorAll('.path-card');
-    var idx = parseInt(e.fragment.dataset.fragmentIndex);
-    cards.forEach(function(c, i) {
-      if (i === idx + 1) {
-        c.style.opacity = '1';
-        c.style.filter = 'none';
-      } else {
-        c.style.opacity = '0.2';
-        c.style.filter = 'blur(2px)';
-      }
-    });
-  }
+  if (e.fragment.classList.contains('path-trigger')) updatePathCards();
 });
 Reveal.on('fragmenthidden', function(e) {
-  var section = e.fragment.closest('section');
-  if (section && section.id === 'choose-path') {
-    var cards = section.querySelectorAll('.path-card');
-    var idx = parseInt(e.fragment.dataset.fragmentIndex);
-    if (idx === 0) {
-      // Back to initial: card 1 visible, 2+3 hidden
-      cards[0].style.opacity = '1';
-      cards[0].style.filter = 'none';
-      cards[1].style.opacity = '0';
-      cards[2].style.opacity = '0';
-    } else if (idx === 1) {
-      // Back to card 2: card 2 bright, 1+3 dim
-      cards[0].style.opacity = '0.2';
-      cards[0].style.filter = 'blur(2px)';
-      cards[1].style.opacity = '1';
-      cards[1].style.filter = 'none';
-      cards[2].style.opacity = '0';
-    }
-  }
+  if (e.fragment.classList.contains('path-trigger')) updatePathCards();
+});
+Reveal.on('slidechanged', function(e) {
+  if (e.currentSlide && e.currentSlide.id === 'choose-path') updatePathCards();
 });
 </script>
 </body>
