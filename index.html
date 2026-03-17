@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Search (for Humans in Government)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+
+  <style>
+/* === ELECTRIC DARK THEME (canonical) === */
+:root {
+  --dark:         #060A12;
+  --panel:        #0D1526;
+  --panel2:       #101E35;
+  --accent:       #AAFF00;
+  --cyan:         #AAFF00;
+  --amber:        #FFB020;
+  --red:          #FF4D4D;
+  --text:         #DCE8F5;
+  --muted:        #7A9BBF;
+  --border:       rgba(170,255,0,0.15);
+  --border-amber: rgba(255,176,32,0.18);
+  --glow:         rgba(170,255,0,0.25);
+}
+.reveal-viewport { background: var(--dark); }
+.reveal-viewport::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(170,255,0,0.07) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none; z-index: 0;
+}
+.reveal-viewport::after {
+  content: ''; position: fixed; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--amber), var(--accent)); z-index: 100;
+}
+.reveal { font-family: 'Source Serif 4', Georgia, serif; color: var(--text); background: var(--dark); }
+.reveal .slides { text-align: left; }
+.reveal .slides section {
+  text-align: left; padding: 0.5rem 3.5rem 1rem;
+  height: 100%; box-sizing: border-box; overflow: hidden;
+}
+section > *:not(.motif-bg):not(.motif-corner):not(.title-deco):not(.stage-num):not(.slide-watermark) { position: relative; z-index: 1; }
+
+/* Typography */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Rajdhani', sans-serif; color: var(--text);
+  text-transform: none; letter-spacing: 0.01em; margin: 0; text-shadow: none;
+}
+.reveal h1 { font-weight: 700; font-size: 5em; line-height: 1.0; }
+.reveal h2 { font-weight: 600; font-size: 1.7em; line-height: 1.05; margin-bottom: 0.15em; }
+.reveal h3 { font-weight: 600; font-size: 1.2em; color: var(--accent); }
+.reveal p { font-family: 'Source Serif 4', serif; font-size: 0.78em; line-height: 1.5; color: var(--text); margin: 0.2em 0; }
+.reveal ul li { font-family: 'Source Serif 4', serif; font-size: 0.74em; line-height: 1.5; color: var(--text); }
+.reveal .panel p, .reveal .panel li, .reveal .callout p, .reveal .callout li,
+.reveal .compare p, .reveal .compare li { font-size: 0.78em; line-height: 1.25; margin: 0.15em 0; }
+code, .reveal code {
+  font-family: 'Fira Code', monospace; font-size: 0.78em; color: var(--accent);
+  background: rgba(170,255,0,0.08); padding: 0.1em 0.35em; border-radius: 3px;
+}
+
+/* Utilities */
+.reveal .text-accent { color: var(--accent); }
+.reveal .text-amber { color: var(--amber); }
+.reveal .text-muted { color: var(--muted); }
+.reveal a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(170,255,0,0.3); }
+.reveal ul { list-style: none; margin: 0; padding: 0; display: block; }
+.reveal ul li { padding: 0.15em 0 0.15em 1.2em; position: relative; }
+.reveal ul li::before { content: '\25B8'; color: var(--accent); position: absolute; left: 0; font-size: 0.8em; top: 0.3em; }
+.reveal p code, .reveal li code, .reveal td code {
+  font-size: 0.85em; padding: 0.1em 0.4em; background: rgba(170,255,0,0.1);
+  border: 1px solid rgba(170,255,0,0.2); border-radius: 3px; color: var(--accent);
+}
+mark { background: rgba(170,255,0,0.15); color: var(--accent); padding: 0.05em 0.3em; border-radius: 3px; }
+mark.amber { background: rgba(255,176,32,0.15); color: var(--amber); }
+.glow { color: var(--accent); text-shadow: 0 0 40px rgba(170,255,0,0.4); }
+blockquote {
+  margin: 0; padding: 0.6rem 0.9rem; background: var(--panel2);
+  border-left: 3px solid var(--amber); border-radius: 0 5px 5px 0;
+  font-family: 'Source Serif 4', serif; font-style: italic; font-size: 0.82em; color: var(--text);
+}
+.reveal .progress { color: var(--accent); height: 2px; }
+.reveal .slide-number { font-family: 'Fira Code', monospace; background: transparent; color: var(--muted); font-size: 0.55em; }
+
+/* Grid */
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7em; align-items: start; }
+.cols-2 > *, .cols-3 > * { min-width: 0; }
+.cols-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.7em; }
+
+/* Split */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 100%; margin: -0.5rem -3.5rem -1rem; }
+.split-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; position: relative; overflow: hidden; }
+.split-content { display: flex; flex-direction: column; justify-content: center; padding: 1.5rem 2.5rem; }
+.split.split-reverse { direction: rtl; }
+.split.split-reverse > * { direction: ltr; }
+
+/* Slide tag & accent line */
+.slide-tag { display: inline-block; font-family: 'Fira Code', monospace; font-size: 0.5em; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.2em; opacity: 0.7; }
+.accent-line { width: 48px; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); margin-bottom: 0.15em; }
+.accent-line.amber { background: linear-gradient(90deg, var(--amber), transparent); }
+
+/* Motif */
+.motif-bg { position: absolute; font-size: 18em; opacity: 0.03; pointer-events: none; user-select: none; line-height: 1; z-index: 0; }
+.motif-bg img { width: 1em; height: auto; display: block; }
+.motif-bg.pos-tr { top: -40px; right: -60px; }
+.motif-bg.pos-tl { top: -40px; left: -60px; }
+.motif-bg.pos-br { bottom: -60px; right: -40px; }
+.motif-bg.pos-bl { bottom: -60px; left: -80px; }
+.motif-bg.pos-mr { top: 50%; right: -60px; transform: translateY(-50%); }
+.motif-bg.pos-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.motif-corner { position: absolute; font-size: 6em; opacity: 0.07; pointer-events: none; user-select: none; line-height: 1; }
+.motif-corner img { width: 1em; height: auto; display: block; }
+.motif-corner.pos-br { bottom: 20px; right: 30px; }
+
+/* Panel */
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 0.45rem 0.75rem; }
+.panel-cyan { border-left: 3px solid var(--cyan); }
+.panel-amber { border-left: 3px solid var(--amber); }
+.panel-red { border-left: 3px solid var(--red); }
+.panel-label { font-family: 'Fira Code', monospace; font-size: 0.55em; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 0.25rem; margin-bottom: 0.25rem; border-bottom: 1px solid var(--border); }
+.panel-cyan .panel-label { color: var(--cyan); }
+.panel-amber .panel-label { color: var(--amber); }
+.panel-red .panel-label { color: var(--red); }
+.panel + .panel { margin-top: 0.3em; }
+
+/* Callout */
+.callout { background: rgba(170,255,0,0.05); border: 1px solid rgba(170,255,0,0.25); border-radius: 5px; padding: 0.35rem 0.7rem; font-family: 'Source Serif 4', serif; font-size: 0.72em; color: var(--text); margin-top: 0.3rem; }
+.callout-amber { background: rgba(255,176,32,0.06); border-color: rgba(255,176,32,0.3); }
+
+/* Comparison */
+.compare { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 0.45rem 0.75rem; height: 100%; box-sizing: border-box; }
+.compare.bad { border-left: 3px solid var(--red); }
+.compare.good { border-left: 3px solid var(--cyan); }
+.label { font-family: 'Fira Code', monospace; font-size: 0.55em; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+.label.bad { color: var(--red); }
+.label.good { color: var(--cyan); }
+
+/* Stat */
+.stat { text-align: center; padding: 0.2rem 0; }
+.stat-number { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 2.8em; line-height: 1; color: var(--cyan); display: block; margin-bottom: 0.05em; }
+.stat-label { font-family: 'Source Serif 4', serif; font-size: 0.65em; color: var(--text); display: block; line-height: 1.25; }
+.stat-context { font-family: 'Fira Code', monospace; font-size: 0.5em; color: var(--muted); display: block; margin-top: 0.2em; }
+.stat.amber .stat-number { color: var(--amber); }
+
+/* Icon grid */
+.icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 0.4rem 0; }
+.icon-grid-item { text-align: center; padding: 0.3rem 0.3rem; }
+.icon-grid-icon { font-size: 1.2em; display: block; margin-bottom: 0.15rem; color: var(--cyan); line-height: 1.2; }
+.icon-grid-label { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.72em; color: var(--text); display: block; margin-bottom: 0.1rem; }
+.icon-grid-desc { font-family: 'Source Serif 4', serif; font-size: 0.55em; color: var(--muted); line-height: 1.3; display: block; }
+.icon-grid-icon.amber { color: var(--amber); }
+.icon-grid-icon.red { color: var(--red); }
+
+/* Flow */
+.flow { display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin: 0.4rem 0; }
+.flow-step { font-family: 'Fira Code', monospace; font-size: 0.55em; padding: 0.35em 0.6em; background: var(--panel2); border: 1px solid var(--border); border-radius: 4px; color: var(--cyan); white-space: nowrap; }
+.flow-step.active { background: rgba(170,255,0,0.12); border-color: var(--cyan); box-shadow: 0 0 12px var(--glow); }
+.flow-arrow { font-family: 'Fira Code', monospace; color: var(--muted); padding: 0 0.4em; font-size: 0.8em; }
+
+/* Key item */
+.key-item { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.25em 0; border-bottom: 1px solid rgba(170,255,0,0.07); }
+.key-item:last-child { border-bottom: none; }
+.key-num { font-family: 'Rajdhani', sans-serif; font-size: 1.2em; font-weight: 700; color: var(--cyan); min-width: 1.3em; line-height: 1.1; }
+.key-text { font-family: 'Source Serif 4', serif; font-size: 0.7em; color: var(--text); line-height: 1.45; }
+.key-text strong { font-weight: 600; }
+
+/* Step list */
+.step { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.55rem; }
+.step-n { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.7em; min-width: 1.4em; height: 1.4em; border-radius: 50%; background: var(--cyan); color: var(--dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.05em; }
+.step-body { flex: 1; font-size: 0.72em; }
+.step-body strong { color: var(--cyan); }
+
+/* Pull quote */
+.pull-quote { max-width: 85%; margin: 1rem auto; text-align: center; }
+.pull-quote-text { font-family: 'Source Serif 4', serif; font-size: 1.2em; font-style: italic; color: var(--text); line-height: 1.45; border: none; background: none; padding: 0; margin: 0 0 0.6rem; position: relative; }
+.pull-quote-text::before { content: '\201C'; font-family: 'Rajdhani', sans-serif; font-size: 3em; color: var(--cyan); opacity: 0.3; position: absolute; top: -0.35em; left: -0.5em; line-height: 1; }
+
+/* Agenda */
+.agenda { max-width: 70%; }
+.agenda-item { display: flex; align-items: baseline; gap: 1em; padding: 0.35em 0; border-bottom: 1px solid rgba(170,255,0,0.07); opacity: 0.5; }
+.agenda-item:last-child { border-bottom: none; }
+.agenda-item.active { opacity: 1; }
+.agenda-num { font-family: 'Rajdhani', sans-serif; font-size: 1.4em; font-weight: 700; color: var(--muted); min-width: 1.3em; line-height: 1; }
+.agenda-item.active .agenda-num { color: var(--cyan); }
+.agenda-title { font-family: 'Source Serif 4', serif; font-size: 0.78em; color: var(--text); }
+.agenda-bar { font-family: 'Fira Code', monospace; font-size: 0.5em; display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.agenda-bar-item { color: var(--muted); opacity: 0.4; }
+.agenda-bar-item.active { color: var(--cyan); opacity: 1; }
+.agenda-bar-item.done { color: var(--muted); opacity: 0.6; text-decoration: line-through; }
+.agenda-bar-sep { color: var(--muted); opacity: 0.25; }
+
+/* Badge / Screenshot / Table */
+.badge { display: inline-block; font-family: 'Fira Code', monospace; font-size: 0.5em; padding: 0.15em 0.55em; border-radius: 3px; background: rgba(255,176,32,0.15); color: var(--amber); border: 1px solid rgba(255,176,32,0.35); vertical-align: middle; }
+.screenshot-frame { border: 2px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(170,255,0,0.06); }
+.screenshot-chrome { display: flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.6rem; background: #1a1a2e; border-bottom: 1px solid var(--border); }
+.screenshot-url { font-family: 'Fira Code', monospace; font-size: 0.4em; color: var(--muted); margin-left: 0.4rem; background: rgba(0,0,0,0.3); padding: 0.15em 0.5em; border-radius: 3px; }
+.mac-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.mac-dot.red { background: #FF5F56; }
+.mac-dot.yellow { background: #FFBD2E; }
+.mac-dot.green { background: #27C93F; }
+.reveal table { width: 100%; border-collapse: collapse; font-family: 'Source Serif 4', serif; font-size: 0.75em; }
+.reveal table th { font-family: 'Fira Code', monospace; font-size: 0.68em; font-weight: 500; color: var(--cyan); background: var(--panel2); padding: 0.35rem 0.6rem; text-align: left; border-bottom: 1px solid var(--border); }
+.reveal table td { padding: 0.3rem 0.6rem; border-bottom: 1px solid rgba(170,255,0,0.06); vertical-align: top; color: var(--text); font-size: 0.72em; }
+
+/* Layouts */
+.title-deco { position: absolute; right: 20px; top: -20px; width: 380px; height: 380px; opacity: 0.12; pointer-events: none; }
+.title-deco img { width: 100%; height: 100%; object-fit: contain; }
+.title-meta { font-family: 'Fira Code', monospace; font-size: 0.55em; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+.title-stats { display: flex; gap: 1.5rem; margin-top: 0.8rem; }
+.title-stats span { font-family: 'Fira Code', monospace; font-size: 0.5em; color: var(--muted); display: flex; align-items: center; gap: 0.4em; }
+.title-stats span::before { content: '\25B8'; color: var(--cyan); }
+.section-label { font-family: 'Fira Code', monospace; font-size: 0.55em; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+.divider-desc { font-family: 'Source Serif 4', serif; font-size: 0.78em; color: var(--muted); max-width: 60%; }
+.closing-links { display: flex; gap: 2rem; margin-top: 1rem; }
+.closing-link { display: flex; flex-direction: column; gap: 0.15rem; }
+.closing-link-label { font-family: 'Fira Code', monospace; font-size: 0.5em; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.closing-link a { font-family: 'Fira Code', monospace; font-size: 0.6em; }
+  </style>
+
+  <!-- Deck-specific styles -->
+  <style>
+    /* Vertical center helper — NO extra padding (section provides it) */
+    .vc { display:flex; flex-direction:column; justify-content:center; height:100%; }
+
+    /* Search mockup */
+    .search-mockup { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.6rem; }
+    .search-bar { background: var(--dark); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.4rem; margin-bottom: 0.35rem; }
+    .search-bar span { font-family: 'Fira Code', monospace; font-size: 0.5em; color: var(--muted); }
+    .search-result-item { padding: 0.15rem 0; border-bottom: 1px solid rgba(170,255,0,0.05); }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-link { font-family: 'Fira Code', monospace; font-size: 0.45em; color: #6B9FFF; display: block; margin-bottom: 0.05rem; }
+    .search-result-snippet { font-family: 'Source Serif 4', serif; font-size: 0.4em; color: var(--muted); line-height: 1.3; }
+    .search-answer { font-family: 'Source Serif 4', serif; font-size: 0.5em; color: var(--text); line-height: 1.5; margin-bottom: 0.3rem; }
+    .search-citation { font-family: 'Fira Code', monospace; font-size: 0.4em; color: var(--amber); border-top: 1px solid var(--border); padding-top: 0.2rem; }
+
+    /* Chat mockup */
+    .chat-mockup { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.5rem; }
+    .chat-msg { margin-bottom: 0.3rem; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.45em; line-height: 1.45; }
+    .chat-msg:last-child { margin-bottom: 0; }
+    .chat-msg.user { background: rgba(170,255,0,0.06); border: 1px solid rgba(170,255,0,0.12); color: var(--text); margin-left: 20%; font-family: 'Source Serif 4', serif; }
+    .chat-msg.ai { background: var(--panel2); border: 1px solid var(--border); color: var(--text); margin-right: 10%; font-family: 'Source Serif 4', serif; }
+    .chat-msg .msg-label { font-family: 'Fira Code', monospace; font-size: 0.75em; color: var(--muted); display: block; margin-bottom: 0.1rem; }
+
+    /* Stage number watermark */
+    .stage-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 5em; line-height: 1; color: var(--cyan); opacity: 0.08; position: absolute; right: 3.5rem; top: 0.8rem; z-index: 0; }
+    .stage-num.amber { color: var(--amber); }
+
+    /* Slide watermark — reusable bg logo overlay for any slide */
+    .slide-watermark {
+      position: absolute;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .slide-watermark img { width: 100%; height: auto; }
+    .slide-watermark.wm-tr { top: 1rem; right: 1.5rem; width: 280px; }
+    .slide-watermark.wm-tl { top: 1rem; left: 1.5rem; width: 280px; }
+    .slide-watermark.wm-br { bottom: 1rem; right: 1.5rem; width: 280px; }
+    .slide-watermark.wm-center { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 350px; }
+
+    /* Path card reveal: show one at a time, others dim */
+    .path-card { transition: opacity 0.5s ease, filter 0.5s ease; }
+    .path-card.dim { opacity: 0.2 !important; visibility: visible !important; filter: blur(2px); }
+    .path-card.dim.visible { opacity: 0.2 !important; filter: blur(2px); }
+    .path-card.reveal-card { opacity: 0 !important; visibility: visible !important; }
+    .path-card.reveal-card.visible { opacity: 1 !important; }
+    /* When card 2 activates, un-dim card 1 is handled via JS below */
+
+    /* Column reveal: col 2 starts dim, col 1 fades on advance */
+    .col-dim-start { opacity: 0.15 !important; visibility: visible !important; transition: opacity 0.6s ease; }
+    .col-dim-start.visible { opacity: 1 !important; }
+    .col-fade-on-advance { opacity: 1 !important; visibility: visible !important; transition: opacity 0.6s ease; }
+    .col-fade-on-advance.visible { opacity: 0.2 !important; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ════════════════ TITLE ════════════════ -->
+<section data-background-color="#060A12">
+  <span class="motif-bg pos-tr"><img src="assets/ec-bolt.svg" alt=""></span>
+  <div class="title-deco"><img src="assets/2022-ec-logo-icon-only.svg" alt=""></div>
+
+  <div class="vc">
+    <div class="title-meta">DRUPALCON CHICAGO &mdash; GOV SUMMIT</div>
+    <h1 style="font-size:2.2em;line-height:1;margin-bottom:0.1em;">AI Search</h1>
+    <h2 style="font-size:1.1em;color:var(--accent);margin-bottom:0.2em;font-weight:700;">for Humans in Government</h2>
+    <p style="font-family:'Source Serif 4',serif;font-size:0.8em;color:var(--muted);font-style:italic;margin:0.1em 0 0.4em;">A Practical Guide</p>
+    <div style="width:50px;height:3px;background:linear-gradient(90deg,var(--accent),var(--amber));margin-bottom:0.4em;"></div>
+    <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);margin:0;">Dan Moriarty &amp; Tim Broeker &mdash; Electric Citizen</p>
+    <div class="title-stats">
+      <span>22 slides</span>
+      <span>~22 min</span>
+    </div>
+  </div>
+
+  <aside class="notes">Many clients have started to ask about AI search. We haven't "solved" it but we are learning alongside our clients. Citizen expectations have already shifted, whether we're ready or not.</aside>
+</section>
+
+
+<!-- ════════════════ {001} ELECTRIC CITIZEN ════════════════ -->
+<section data-background-color="#060A12" data-id="001">
+  <span class="motif-bg pos-bl"><img src="assets/ec-bolt.svg" alt=""></span>
+  <div class="split">
+    <div class="split-content" style="justify-content:space-between;">
+      <div>
+        <span class="slide-tag">{001}</span>
+        <div class="accent-line"></div>
+        <h2 style="font-size:1.5em;">Welcome!</h2>
+        <h3 style="font-size:0.82em;margin-bottom:0.5em;">Enterprise Drupal &middot; 15 Years in State &amp; Local Gov</h3>
+        <ul>
+          <li>State Gov &mdash; agencies and portals</li>
+          <li>City &amp; County &mdash; sites &amp; systems</li>
+          <li>Higher Ed &mdash; state university platforms</li>
+        </ul>
+      </div>
+      <div class="panel panel-amber" style="padding:0.6rem 0.9rem;background:rgba(255,176,32,0.05);border:1px solid rgba(255,176,32,0.25);">
+        <div class="panel-label" style="color:var(--amber);font-size:0.6em;letter-spacing:0.15em;">CURRENT STATUS</div>
+        <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;line-height:1.35;margin:0;">Helping our clients figure out what AI means for their web presence.</p>
+      </div>
+    </div>
+    <div class="split-visual" style="background:var(--panel2);">
+      <img src="assets/2022-ec-logo-vertical-reversed-type.png" alt="Electric Citizen" style="width:220px;height:auto;opacity:0.9;">
+    </div>
+  </div>
+  <aside class="notes">Quick intro — what it says on the tin. We build Drupal sites for government. Right now, the most interesting conversations we're having are about AI.</aside>
+</section>
+
+
+<!-- ════════════════ {002} AGENDA ════════════════ -->
+<section data-background-color="#060A12" data-id="002">
+  <span class="motif-bg pos-tr"><img src="assets/ec-bolt.svg" alt=""></span>
+  <div class="vc">
+    <span class="slide-tag">{002}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.5em;">What We'll Cover</h2>
+    <div class="agenda" style="margin-top:0.4em;">
+      <div class="agenda-item active">
+        <span class="agenda-num">01</span>
+        <span class="agenda-title">The Problem &mdash; why gov search is stuck in 2006</span>
+      </div>
+      <div class="agenda-item active">
+        <span class="agenda-num">02</span>
+        <span class="agenda-title">Defining AI Search &mdash; a shared vocabulary</span>
+      </div>
+      <div class="agenda-item active">
+        <span class="agenda-num">03</span>
+        <span class="agenda-title">The 5 Stages &mdash; where you are and where you're going</span>
+      </div>
+      <div class="agenda-item active">
+        <span class="agenda-num">04</span>
+        <span class="agenda-title">Getting There &mdash; barriers, foundations, and paths</span>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><!-- ADDED: not in outline --> Quick roadmap. We'll start with the problem, give you a shared vocabulary, walk through search maturity stages, then talk about how to actually get from here to there.</aside>
+</section>
+
+
+<!-- ════════════════ SECTION: THE PROBLEM ════════════════ -->
+<section data-background-color="#060A12">
+  <div class="vc">
+    <span class="section-label">Section 01</span>
+    <h1 style="font-size:3em;color:var(--cyan);line-height:1;">The Problem</h1>
+    <p class="divider-desc">Government search is stuck in the past &mdash; why it matters now more than ever.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════ {003} STILL 2006 ════════════════ -->
+<section data-background-color="#060A12" data-id="003" style="padding-top:0.2rem;">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <span class="slide-tag">{003}</span>
+  <div class="accent-line"></div>
+  <h2 style="font-size:1.3em;margin-bottom:0.05em;">For Most Gov Sites, It's Still 2006</h2>
+  <p style="color:var(--muted);font-size:0.62em;margin-bottom:0.5em;">20 years later, it is better but not a lot better.</p>
+
+  <div class="cols-2" style="margin-top:0.15em;">
+    <div class="fragment col-fade-on-advance" data-fragment-index="0">
+      <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--red);letter-spacing:0.1em;display:block;margin-bottom:0.15em;">WHAT USERS GET</span>
+      <div class="screenshot-frame">
+        <div class="screenshot-chrome">
+          <span class="mac-dot red"></span><span class="mac-dot yellow"></span><span class="mac-dot green"></span>
+          <span class="screenshot-url">mn.gov/search</span>
+        </div>
+        <img src="assets/mnsearch.png" alt="Government search results page" style="width:100%;display:block;max-height:420px;object-fit:cover;object-position:top;">
+      </div>
+    </div>
+    <div class="fragment col-dim-start" data-fragment-index="0">
+      <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:0.15em;">WHAT USERS EXPECT</span>
+      <div class="screenshot-frame">
+        <div class="screenshot-chrome">
+          <span class="mac-dot red"></span><span class="mac-dot yellow"></span><span class="mac-dot green"></span>
+          <span class="screenshot-url">chatgpt.com</span>
+        </div>
+        <img src="assets/aisearch.png" alt="AI search giving a direct answer" style="width:100%;display:block;max-height:420px;object-fit:cover;object-position:top;">
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Search has gotten better on most gov sites, but fundamentally the same as 20 years ago. On the left: what citizens now expect. On the right: what they get. Since ChatGPT launched in November 2022, the public's mental model of "search" changed permanently.</aside>
+</section>
+
+
+<!-- ════════════════ {004} CITIZENS 2026 ════════════════ -->
+<section data-background-color="#060A12" data-id="004">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{004}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.4em;">Your Citizens Are Living in 2026</h2>
+
+    <div style="margin-top:0.4em;">
+      <div style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
+        <p style="font-size:0.78em;margin:0;">They're asking <strong style="color:var(--accent);">ChatGPT or Claude</strong> instead of searching your site.</p>
+      </div>
+      <div class="fragment" data-fragment-index="0" style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
+        <p style="font-size:0.78em;margin:0;">The answers they get back are <strong style="color:var(--accent);">pretty good</strong>.</p>
+      </div>
+      <div class="fragment" data-fragment-index="1" style="border-left:3px solid var(--red);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(255,77,77,0.03);">
+        <p style="font-size:0.78em;margin:0;">But they come from <strong style="color:var(--red);">third-party vendor sites</strong>, not your .gov site.</p>
+      </div>
+      <div class="fragment" data-fragment-index="2" style="border-left:3px solid var(--red);padding:0.35em 0.8em;background:rgba(255,77,77,0.03);">
+        <p style="font-size:0.78em;margin:0;">The answers can be <strong style="color:var(--red);">factually incorrect</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Tim's car sale / DMV anecdote. Your citizens are already using AI to find your content, you just don't know it. You no longer control the answer — but you can start to take it back.</aside>
+</section>
+
+
+<!-- ════════════════ {005} THE REAL QUESTION ════════════════ -->
+<section data-background-color="#060A12" data-id="005" data-transition="fade">
+  <div class="slide-watermark wm-center"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc" style="align-items:center;text-align:center;">
+    <span class="slide-tag">{005}</span>
+    <div class="accent-line amber" style="margin:0 auto 0.4em;"></div>
+    <h2 style="font-size:1.6em;text-align:center;max-width:85%;line-height:1.2;">
+      The question isn't whether this is happening.
+    </h2>
+    <p style="font-size:0.95em;text-align:center;max-width:90%;margin:0.4em auto 0;line-height:1.5;">
+      It's whether <strong style="color:var(--amber);">your agency controls the answers</strong> &mdash; on your site and off.
+    </p>
+  </div>
+  <aside class="notes">This is the core tension. Citizens are getting answers about your services from AI — answers you didn't write, can't verify, and can't update. The question is whether you take control of that.</aside>
+</section>
+
+
+<!-- ════════════════ SECTION: SO WHAT NOW? ════════════════ -->
+<section data-background-color="#060A12">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="section-label">Section 02</span>
+    <h1 style="font-size:3em;color:var(--cyan);line-height:1;">So What Now?</h1>
+    <p class="divider-desc">Let's get on the same page.<br>What even is AI Search? A chatbot? How do we get from here to there?</p>
+  </div>
+  <aside class="notes">We know gov search is tough and stuck in the past. And there is a real cost to not getting better — trust and financial. How do we get from here to there?</aside>
+</section>
+
+
+<!-- ════════════════ {006} AI SEARCH MEANS EVERYTHING ════════════════ -->
+<section data-background-color="#060A12" data-id="006">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{006}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.3em;">"AI Search" Means Everything. And Nothing.</h2>
+    <p style="color:var(--muted);font-size:0.65em;margin-bottom:0.4em;">Depending on who's talking, it might mean...</p>
+
+    <div class="icon-grid" style="grid-template-columns:repeat(3,1fr);gap:0.8rem;">
+      <div class="icon-grid-item fragment" data-fragment-index="0" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon" style="font-size:1.1em;">&#128269;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;">Smarter Links</span>
+        <span class="icon-grid-desc">Search summary on top of results</span>
+      </div>
+      <div class="icon-grid-item fragment" data-fragment-index="0" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon" style="font-size:1.1em;">&#128172;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;">Plain English</span>
+        <span class="icon-grid-desc">Search bar that understands intent</span>
+      </div>
+      <div class="icon-grid-item fragment" data-fragment-index="0" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon" style="font-size:1.1em;">&#129302;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;">Simple Bot</span>
+        <span class="icon-grid-desc">Answers basic questions</span>
+      </div>
+      <div class="icon-grid-item fragment" data-fragment-index="1" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon" style="font-size:1.1em;">&#128483;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;">Conversational</span>
+        <span class="icon-grid-desc">Chatbot that knows your site</span>
+      </div>
+      <div class="icon-grid-item fragment" data-fragment-index="1" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon" style="font-size:1.1em;">&#9889;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;">Agentic</span>
+        <span class="icon-grid-desc">Completes tasks on your behalf</span>
+      </div>
+      <div class="icon-grid-item fragment" data-fragment-index="1" style="background:rgba(255,176,32,0.06);border:1px solid rgba(255,176,32,0.2);border-radius:6px;padding:0.4rem 0.5rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#10067;</span>
+        <span class="icon-grid-label" style="font-size:0.68em;color:var(--amber);">All of These?</span>
+        <span class="icon-grid-desc">No wonder everyone's confused.</span>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Your internal teams and leadership need to know the difference. This talk exists to give you a shared vocabulary and a map.</aside>
+</section>
+
+
+<!-- ════════════════ {007} THE 5 STAGES ════════════════ -->
+<section data-background-color="#060A12" data-id="007" style="padding-top:0.3rem;">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <span class="slide-tag">{007}</span>
+  <div class="accent-line"></div>
+  <h2 style="font-size:1.2em;margin-bottom:0.05em;">The 5 Stages of Search</h2>
+  <p style="color:var(--muted);font-size:0.55em;margin-bottom:0.25em;">Where you are &mdash; and where you're going</p>
+
+  <!-- Stage 1 -->
+  <div style="display:flex;align-items:stretch;gap:0.7em;margin-bottom:0.2em;">
+    <div style="width:3px;background:var(--accent);border-radius:2px;flex-shrink:0;"></div>
+    <div style="flex-shrink:0;width:2.2em;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);line-height:1;">1</span>
+    </div>
+    <div style="flex:1;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--accent);letter-spacing:0.08em;">KEYWORD SEARCH</span>
+      <p style="font-size:0.65em;margin:0;color:var(--text);">"You search. You hunt." &mdash; Ranked by keyword. User does the work.</p>
+    </div>
+    <div style="flex-shrink:0;display:flex;align-items:center;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--accent);padding:0.2em 0.5em;background:rgba(170,255,0,0.1);border-radius:3px;border:1px solid rgba(170,255,0,0.2);">&#9650; MOST GOV SITES</span>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div style="display:flex;align-items:stretch;gap:0.7em;margin-bottom:0.2em;">
+    <div style="width:3px;background:var(--muted);border-radius:2px;flex-shrink:0;opacity:0.5;"></div>
+    <div style="flex-shrink:0;width:2.2em;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--muted);line-height:1;">2</span>
+    </div>
+    <div style="flex:1;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);letter-spacing:0.08em;">SEMANTIC SEARCH</span>
+      <p style="font-size:0.65em;margin:0;color:var(--text);">"You search. It understands." &mdash; Matches meaning, not vocabulary. Still links.</p>
+    </div>
+  </div>
+
+  <!-- AI Boundary -->
+  <div style="display:flex;align-items:center;gap:0.6em;margin:0.15em 0 0.25em;padding-left:3.6em;">
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,var(--amber),transparent);"></div>
+    <span style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--amber);letter-spacing:0.15em;white-space:nowrap;">AI BOUNDARY</span>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--amber));"></div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div style="display:flex;align-items:stretch;gap:0.7em;margin-bottom:0.2em;">
+    <div style="width:3px;background:var(--amber);border-radius:2px;flex-shrink:0;"></div>
+    <div style="flex-shrink:0;width:2.2em;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--amber);line-height:1;">3</span>
+    </div>
+    <div style="flex:1;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--amber);letter-spacing:0.08em;">GROUNDED AI SEARCH</span>
+      <p style="font-size:0.65em;margin:0;color:var(--text);">"You ask. It answers." &mdash; Direct answers. Citations. Your content only.</p>
+    </div>
+    <div style="flex-shrink:0;display:flex;align-items:center;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.4em;color:var(--amber);padding:0.2em 0.5em;background:rgba(255,176,32,0.1);border-radius:3px;border:1px solid rgba(255,176,32,0.2);">&#9733; TARGET</span>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div style="display:flex;align-items:stretch;gap:0.7em;margin-bottom:0.3em;opacity:0.5;">
+    <div style="width:3px;background:var(--muted);border-radius:2px;flex-shrink:0;opacity:0.4;"></div>
+    <div style="flex-shrink:0;width:2.2em;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--muted);line-height:1;">4</span>
+    </div>
+    <div style="flex:1;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);letter-spacing:0.08em;">CONVERSATIONAL AI</span>
+      <p style="font-size:0.65em;margin:0;color:var(--text);">"You talk. It assists." &mdash; Multi-turn. Remembers context.</p>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div style="display:flex;align-items:stretch;gap:0.7em;opacity:0.3;">
+    <div style="width:3px;background:var(--muted);border-radius:2px;flex-shrink:0;opacity:0.3;"></div>
+    <div style="flex-shrink:0;width:2.2em;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--muted);line-height:1;">5</span>
+    </div>
+    <div style="flex:1;">
+      <span style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--muted);letter-spacing:0.08em;">AGENTIC AI</span>
+      <p style="font-size:0.65em;margin:0;color:var(--text);">"You describe a goal. It acts." &mdash; Completes tasks on your behalf.</p>
+    </div>
+  </div>
+
+  <aside class="notes">This is the map for the rest of the talk. Almost every gov site is at Stage 1. Some invested in Solr are at 2. Very few at 3. None at 5. The amber line between 2 and 3 is where generative AI enters the picture.</aside>
+</section>
+
+
+<!-- ════════════════ {008} STAGE 1 ════════════════ -->
+<section data-background-color="#060A12" data-id="008">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <div class="agenda-bar">
+      <span class="agenda-bar-item active">Stage 1</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 5</span>
+    </div>
+    <span class="slide-tag">{008}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Keyword Search</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You search. You hunt."</p>
+    <div class="cols-2" style="align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Returns a list ranked by keyword relevance</p>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">User does all the interpretive work</p>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Where almost every gov site is today</p>
+        </div>
+        <div style="border-left:3px solid var(--muted);padding:0.3em 0.7em;background:rgba(170,255,0,0.02);">
+          <p style="font-size:0.7em;margin:0;color:var(--muted);font-style:italic;">Familiar. Cheap. Often deeply frustrating.</p>
+        </div>
+      </div>
+      <div>
+        <div class="search-mockup" style="border-color:rgba(255,77,77,0.12);">
+          <div class="search-bar"><span>renew contractor license</span></div>
+          <div class="search-result-item"><span class="search-result-link">MN Dept of Labor - Licensing Portal</span><span class="search-result-snippet">...contractor licensing requirements for Minnesota including renewal...</span></div>
+          <div class="search-result-item"><span class="search-result-link">FAQ: Contractor License Renewal</span><span class="search-result-snippet">...frequently asked questions about renewing your contractor license...</span></div>
+          <div class="search-result-item"><span class="search-result-link">Building Codes and Standards</span><span class="search-result-snippet">...residential building contractor, remodeler license categories...</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">A keyword search engine looks for your words somewhere in the indexed content — any context, any order, any relevance. We've accepted this as normal for 25 years.</aside>
+</section>
+
+
+<!-- ════════════════ {009} STAGE 2 ════════════════ -->
+<section data-background-color="#060A12" data-id="009">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <div class="agenda-bar">
+      <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item active">Stage 2</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 5</span>
+    </div>
+    <span class="slide-tag">{009}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Semantic Search</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You search. It understands."</p>
+    <div class="cols-2" style="align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Understands intent, not just keywords</p>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Finds the right page even if exact words don't match</p>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Still returns links &mdash; not answers</p>
+        </div>
+        <div style="border-left:3px solid var(--muted);padding:0.3em 0.7em;background:rgba(170,255,0,0.02);">
+          <p style="font-size:0.7em;margin:0;color:var(--muted);font-style:italic;">Low risk. Achievable now. No generative AI.</p>
+        </div>
+      </div>
+      <div>
+        <div class="compare bad" style="padding:0.4rem 0.6rem;margin-bottom:0.4em;">
+          <span class="label bad" style="font-size:0.48em;margin-bottom:0.25rem;">STAGE 1 RESULT</span>
+          <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;color:var(--muted);margin:0;">"how to get my building permit"</p>
+          <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--red);margin:0.2em 0 0;">→ "Building Codes Division" <span style="color:var(--muted);">(wrong)</span></p>
+        </div>
+        <div class="compare good" style="padding:0.4rem 0.6rem;">
+          <span class="label good" style="font-size:0.48em;margin-bottom:0.25rem;">STAGE 2 RESULT</span>
+          <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;color:var(--muted);margin:0;">"how to get my building permit"</p>
+          <p style="font-family:'Fira Code',monospace;font-size:0.48em;color:var(--accent);margin:0.2em 0 0;">→ "Apply for a Residential Building Permit"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Not really "AI Search" — no generative AI involved. Vector embeddings match meaning, not vocabulary. The gap between how citizens ask questions and how government titles its pages is enormous — semantic search closes most of it.</aside>
+</section>
+
+
+<!-- ════════════════ {010} STAGE 3 ════════════════ -->
+<section data-background-color="#060A12" data-id="010">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <div class="agenda-bar">
+      <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item active">Stage 3</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 5</span>
+    </div>
+    <span class="slide-tag">{010}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.4em;">Grounded AI Search</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">"You ask. It answers. You can verify."</p>
+    <div class="cols-2" style="align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Natural language question &mdash; direct answer</p>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Generated <strong style="color:var(--amber);">only from your approved content</strong></p>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Every answer cites its source</p>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;background:rgba(255,176,32,0.05);border:1px solid rgba(255,176,32,0.15);border-radius:0 4px 4px 0;">
+          <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:600;margin:0;color:var(--amber);">The responsible target for government right now.</p>
+        </div>
+      </div>
+      <div>
+        <div class="search-mockup" style="border-color:rgba(255,176,32,0.2);">
+          <div class="search-bar"><span>How do I renew my contractor license?</span></div>
+          <div class="search-answer" style="font-size:0.48em;">Submit form BC-100 with your CE certificate and the $100 fee. Renewals are due by your license anniversary date.</div>
+          <div class="search-citation">Source: <span style="color:var(--accent);">Contractor License Renewal</span> &middot; mn.gov/dli</div>
+          <div class="search-citation" style="border:none;padding-top:0.1rem;">Source: <span style="color:var(--accent);">Fee Schedule 2026</span> &middot; mn.gov/dli/fees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Nobody in US gov has fully deployed this at scale for citizen-facing search yet. The technology exists — what's missing is the content foundation and governance. Indiana and Utah are closest — both keeping it internal until ready.</aside>
+</section>
+
+
+<!-- ════════════════ {011} STAGE 4 ════════════════ -->
+<section data-background-color="#060A12" data-id="011">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <div class="agenda-bar">
+      <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item active">Stage 4</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 5</span>
+    </div>
+    <span class="slide-tag">{011}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Conversational AI</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--accent);margin:0.1em 0 0.4em;">"You talk. It assists."</p>
+    <div class="cols-2" style="align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Multi-turn &mdash; remembers context within a session</p>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(170,255,0,0.03);">
+          <p style="font-size:0.7em;margin:0;">Handles follow-ups and clarifications naturally</p>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Grounding still required &mdash; <strong style="color:var(--amber);">more critical, not less</strong></p>
+        </div>
+        <div style="border-left:3px solid var(--muted);padding:0.3em 0.7em;background:rgba(170,255,0,0.02);">
+          <p style="font-size:0.7em;margin:0;color:var(--muted);font-style:italic;">Aspirational for most gov orgs right now.</p>
+        </div>
+      </div>
+      <div>
+        <div class="chat-mockup">
+          <div class="chat-msg user"><span class="msg-label">CITIZEN</span>How do I renew my contractor license?</div>
+          <div class="chat-msg ai"><span class="msg-label">GOV SEARCH</span>Submit form BC-100 with your CE certificate and $100 fee.<span style="font-family:'Fira Code',monospace;font-size:0.75em;color:var(--amber);display:block;margin-top:0.1em;">mn.gov/dli/renewal</span></div>
+          <div class="chat-msg user"><span class="msg-label">CITIZEN</span>Actually, the commercial license.</div>
+          <div class="chat-msg ai"><span class="msg-label">GOV SEARCH</span>For commercial, you'll need form BC-200 and 16 hours CE credit...<span style="font-family:'Fira Code',monospace;font-size:0.75em;color:var(--amber);display:block;margin-top:0.1em;">mn.gov/dli/commercial</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">The citizen doesn't have to get their question right the first time. "Actually I meant the commercial license, not residential" — the system holds context. Grounding is more critical here, not less.</aside>
+</section>
+
+
+<!-- ════════════════ {012} STAGE 5 ════════════════ -->
+<section data-background-color="#060A12" data-id="012">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <div class="agenda-bar">
+      <span class="agenda-bar-item">Stage 1</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 2</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 3</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item">Stage 4</span><span class="agenda-bar-sep">/</span>
+      <span class="agenda-bar-item active">Stage 5</span>
+    </div>
+    <span class="slide-tag">{012}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.4em;">Agentic AI</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.95em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">"You describe a goal. It acts."</p>
+    <div class="cols-2" style="align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Doesn't just answer &mdash; <strong style="color:var(--accent);">takes steps on your behalf</strong></p>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,176,32,0.03);">
+          <p style="font-size:0.7em;margin:0;">Search disappears &mdash; citizen states a need, system resolves it</p>
+        </div>
+        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.25em;background:rgba(255,77,77,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--red);">Nobody in government is here yet</strong></p>
+        </div>
+        <div style="border-left:3px solid var(--muted);padding:0.3em 0.7em;background:rgba(170,255,0,0.02);">
+          <p style="font-size:0.7em;margin:0;color:var(--muted);font-style:italic;">Requires everything above it to be solid.</p>
+        </div>
+      </div>
+      <div>
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;margin:0 auto;display:block;">
+          <rect x="40" y="5" width="200" height="30" rx="4" fill="rgba(170,255,0,0.08)" stroke="#AAFF00" stroke-width="1.5"/>
+          <text x="140" y="24" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="10">"Renew my contractor license"</text>
+          <line x1="140" y1="35" x2="140" y2="50" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="140,54 136,47 144,47" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="20" y="58" width="110" height="24" rx="3" fill="#101E35" stroke="rgba(170,255,0,0.12)" stroke-width="1"/>
+          <text x="75" y="74" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="8">Check eligibility</text>
+          <rect x="150" y="58" width="110" height="24" rx="3" fill="#101E35" stroke="rgba(170,255,0,0.12)" stroke-width="1"/>
+          <text x="205" y="74" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="8">Verify CE credits</text>
+          <line x1="140" y1="82" x2="140" y2="97" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="140,101 136,94 144,94" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="20" y="105" width="110" height="24" rx="3" fill="#101E35" stroke="rgba(170,255,0,0.12)" stroke-width="1"/>
+          <text x="75" y="121" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="8">Pre-fill form BC-100</text>
+          <rect x="150" y="105" width="110" height="24" rx="3" fill="#101E35" stroke="rgba(170,255,0,0.12)" stroke-width="1"/>
+          <text x="205" y="121" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="8">Process payment</text>
+          <line x1="140" y1="129" x2="140" y2="144" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="140,148 136,141 144,141" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="30" y="152" width="220" height="30" rx="4" fill="rgba(255,176,32,0.06)" stroke="#FFB020" stroke-width="1.5"/>
+          <text x="140" y="171" text-anchor="middle" fill="#FFB020" font-family="monospace" font-size="10">License renewed. Confirmation sent.</text>
+          <text x="140" y="200" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="8" opacity="0.5">GOAL → STEPS → RESOLUTION</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">The citizen says "I need to renew my contractor license" — the system checks eligibility, pre-fills the form, submits it. NASCIO published research on this trajectory weeks ago — it's not speculative.</aside>
+</section>
+
+
+<!-- ════════════════ SECTION: GETTING THERE ════════════════ -->
+<section data-background-color="#060A12">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="section-label">Section 03</span>
+    <h1 style="font-size:2.8em;color:var(--cyan);line-height:1;">Getting From<br>Here to There</h1>
+    <p class="divider-desc">How to start the journey to Stage 3 and Stage 4.</p>
+  </div>
+  <aside class="notes">We've mapped the terrain. Now let's talk about how to actually move forward.</aside>
+</section>
+
+
+<!-- ════════════════ {013} BARRIERS ════════════════ -->
+<section data-background-color="#060A12" data-id="013">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{013}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.4em;">Understand the Barriers</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--amber);margin:0.1em 0 0.4em;">The limitations are real.</p>
+    <div class="icon-grid" style="margin-top:0.1em;">
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#128451;</span>
+        <span class="icon-grid-label">Content Sprawl</span>
+        <span class="icon-grid-desc">40 agencies, independent content. AI inherits all of it.</span>
+      </div>
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#9878;</span>
+        <span class="icon-grid-label">Policy &amp; Legal</span>
+        <span class="icon-grid-desc">Your state is establishing AI governance right now.</span>
+      </div>
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#128337;</span>
+        <span class="icon-grid-label">Procurement Lag</span>
+        <span class="icon-grid-desc">6-month contracts vs. 3-month AI release cycles.</span>
+      </div>
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#129309;</span>
+        <span class="icon-grid-label">Staff Capacity</span>
+        <span class="icon-grid-desc">1-2 people running an entire state portal.</span>
+      </div>
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon red" style="font-size:1.1em;">&#128640;</span>
+        <span class="icon-grid-label">Speed of Change</span>
+        <span class="icon-grid-desc">AI is moving faster than mortals can comprehend.</span>
+      </div>
+      <div class="icon-grid-item" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.4rem;">
+        <span class="icon-grid-icon amber" style="font-size:1.1em;">&#128176;</span>
+        <span class="icon-grid-label">Budget Reality</span>
+        <span class="icon-grid-desc">New tools compete with existing maintenance.</span>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">States are standing up AI governance frameworks now — know what's coming in your state before your pilot gets ahead of it. Each barrier is real, but none are permanent.</aside>
+</section>
+
+
+<!-- ════════════════ {014} BAD CONTENT ════════════════ -->
+<section data-background-color="#060A12" data-id="014">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{014}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.3em;">You Can't AI Your Way Out of Bad Content</h2>
+    <div class="cols-2" style="margin-top:0.3em;align-items:start;">
+      <div>
+        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Outdated content</strong> &mdash; Last reviewed 2019. AI cites every stale page confidently.</p>
+        </div>
+        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Orphaned pages</strong> &mdash; Five CMS migrations deep. Nobody owns them.</p>
+        </div>
+        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;margin-bottom:0.3em;background:rgba(255,77,77,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Org-chart IA</strong> &mdash; Built around departments, not citizen tasks.</p>
+        </div>
+        <div style="border-left:3px solid var(--red);padding:0.3em 0.7em;background:rgba(255,77,77,0.03);">
+          <p style="font-size:0.7em;margin:0;"><strong style="color:var(--amber);">Under-resourced</strong> &mdash; 1-2 people running an entire state portal.</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;height:100%;">
+        <div style="background:rgba(255,77,77,0.04);border:1px solid rgba(255,77,77,0.15);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:0.8rem 1rem;">
+          <p style="font-family:'Rajdhani',sans-serif;font-size:0.88em;font-weight:600;color:var(--text);line-height:1.4;margin:0;">
+            Bolt an LLM onto a broken content foundation and you get a <span style="color:var(--red);">confident, well-spoken wrong answer.</span>
+          </p>
+          <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.4em 0 0;">In government, that's a liability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">AI doesn't fix bad content — it retrieves it, generates from it, and cites it confidently. Stale permit fee from 2019 — AI tells citizens the wrong amount with a source citation.</aside>
+</section>
+
+
+<!-- ════════════════ {015} FIX FOUNDATION ════════════════ -->
+<section data-background-color="#060A12" data-id="015">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{015}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Fix Your Foundation</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">Preparing for long-term success in an AI-driven world</p>
+    <div style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
+      <p style="font-size:0.72em;margin:0;"><strong style="color:var(--accent);">Kill the dead weight</strong> &mdash; Archive or remove. Every irrelevant page is retrieval noise.</p>
+    </div>
+    <div style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
+      <p style="font-size:0.72em;margin:0;"><strong style="color:var(--accent);">Content audit</strong> &mdash; Map what's current, stale, redundant. Figure out your PDFs.</p>
+    </div>
+    <div style="border-left:3px solid var(--accent);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(170,255,0,0.03);">
+      <p style="font-size:0.72em;margin:0;"><strong style="color:var(--accent);">Fix your structure</strong> &mdash; Structured content types, clean taxonomies, citizen-centered IA.</p>
+    </div>
+    <div style="border-left:3px solid var(--amber);padding:0.35em 0.8em;margin-bottom:0.35em;background:rgba(255,176,32,0.03);">
+      <p style="font-size:0.72em;margin:0;"><strong style="color:var(--amber);">Ask the hard questions</strong> &mdash; Are you patching legacy debt, or does this need a clean rebuild?</p>
+    </div>
+    <div style="margin-top:0.3em;padding:0.35em 0.8em;background:rgba(170,255,0,0.04);border:1px solid rgba(170,255,0,0.15);border-radius:4px;">
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.78em;font-weight:600;margin:0;color:var(--accent);">AI search quality is directly proportional to content quality.</p>
+    </div>
+  </div>
+  <aside class="notes">More sites need a full rebuild than their owners want to admit. Content audit is the one thing you can start this week with no approval needed.</aside>
+</section>
+
+
+<!-- ════════════════ {016} CHOOSE A PATH ════════════════ -->
+<section data-background-color="#060A12" data-id="016" id="choose-path">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{016}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Choose a Path</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">A map, not a prescription.</p>
+    <div class="cols-3" style="gap:0.8em;" id="path-cards">
+      <!-- Card 1: visible on load, dims on advance -->
+      <div class="panel path-card" id="pc1" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);">
+        <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">1</span>
+        <div class="panel-label" style="color:var(--accent);">Purpose-Built SaaS</div>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Cludo, Coveo</p>
+        <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Stage 3 &amp; 4 today. Gov-specific features. No dev team required.</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Fastest to deploy</p>
+      </div>
+      <!-- Card 2: hidden, reveals on first advance -->
+      <div class="panel path-card reveal-card fragment" data-fragment-index="0" id="pc2" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--amber);background:rgba(255,176,32,0.04);border-color:rgba(255,176,32,0.25);">
+        <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--amber);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">2</span>
+        <div class="panel-label" style="color:var(--amber);">Enterprise Platform</div>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Azure &middot; Vertex &middot; AWS</p>
+        <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Inside your enterprise agreement. FedRAMP authorized. Drupal integration paths exist.</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Most underused option</p>
+      </div>
+      <!-- Card 3: hidden, reveals on second advance -->
+      <div class="panel path-card reveal-card fragment" data-fragment-index="1" id="pc3" style="height:100%;padding:0.7rem 0.9rem;border-left:3px solid var(--accent);background:rgba(170,255,0,0.04);border-color:rgba(170,255,0,0.25);">
+        <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.8em;color:var(--accent);opacity:0.15;float:right;line-height:1;margin-top:-0.1em;">3</span>
+        <div class="panel-label" style="color:var(--accent);">Build Drupal-Native</div>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--amber);margin:0.25em 0;">Drupal AI + Search API + Vector DB</p>
+        <p style="font-size:0.68em;line-height:1.5;margin-top:0.3em;">Own your architecture. Own your data. No vendor lock-in. Swap LLM providers freely.</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.42em;color:var(--muted);margin-top:0.4em;">Most control, most investment</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Three realistic paths — not recommending one over the others. The middle column is the most underused. Many agencies are paying for AI capabilities in enterprise agreements they've never activated.</aside>
+</section>
+
+
+<!-- ════════════════ {017} PATH 1 ════════════════ -->
+<section data-background-color="#060A12" data-id="017">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{017}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.3em;">Path 1 &mdash; Purpose-Built SaaS</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">e.g. Cludo, Coveo, and other up-and-comers</p>
+    <div class="cols-2" style="gap:0.8em;">
+      <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
+        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 &amp; 4 capable now</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov-specific features, analytics, admin UI</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">No internal dev capacity needed</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Supported and maintained</li></ul>
+      </div>
+      <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Expensive &mdash; enterprise subscription pricing</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Crawler-based &mdash; not tied to your Drupal content</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Data sovereignty &mdash; where do citizen queries go?</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Vendor lock-in &mdash; switching is painful</li></ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Very few vendors doing this completely for gov right now. Crawler-based means they index your public site — not connected to Drupal's content layer. If you need Stage 3/4 now and don't have dev capacity, this is the only realistic path today.</aside>
+</section>
+
+
+<!-- ════════════════ {018} PATH 2 ════════════════ -->
+<section data-background-color="#060A12" data-id="018">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{018}</span>
+    <div class="accent-line amber"></div>
+    <h2 style="font-size:1.3em;">Path 2 &mdash; You May Already Have It</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Microsoft Azure &middot; Google Vertex AI &middot; AWS</p>
+    <div class="cols-2" style="gap:0.8em;">
+      <div class="compare good" style="padding:0.5rem 0.7rem;"><span class="label good">Pros</span>
+        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Likely inside your existing enterprise agreement</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">FedRAMP authorized &mdash; procurement done</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Drupal integration paths exist for all three</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Stage 3 capable with proper configuration</li></ul>
+      </div>
+      <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+        <ul><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Not turnkey &mdash; requires real config and dev work</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Gov IT may own the contract &mdash; web team needs access</li><li style="font-size:0.65em;padding:0.2em 0 0.2em 1.2em;">Still requires the same content foundation work</li></ul>
+      </div>
+    </div>
+    <div style="margin-top:0.3em;padding:0.35em 0.8em;background:rgba(255,176,32,0.04);border:1px solid rgba(255,176,32,0.15);border-radius:4px;">
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.75em;font-weight:600;margin:0;color:var(--amber);">Ask your IT department before signing a new vendor contract. You may already be paying for this.</p>
+    </div>
+  </div>
+  <aside class="notes">Azure AI Search has a Search API module for Drupal. Google Vertex AI Search also has one. The middle path is most underused because web teams don't know what's in their agency's enterprise agreements.</aside>
+</section>
+
+
+<!-- ════════════════ {019} PATH 3 ════════════════ -->
+<section data-background-color="#060A12" data-id="019">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{019}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.3em;">Path 3 &mdash; Build Drupal-Native</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--muted);margin:0.1em 0 0.4em;">Drupal AI + Search API + Vector DB + LLM</p>
+    <div class="cols-2" style="gap:0.8em;align-items:start;">
+      <div>
+        <div class="compare good" style="padding:0.5rem 0.7rem;margin-bottom:0.4em;"><span class="label good">Pros</span>
+          <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">You own the architecture and the data</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Tightly coupled to structured Drupal content</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">No vendor lock-in &mdash; swap LLM providers</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Lowest long-term cost, highest control</li></ul>
+        </div>
+        <div class="compare bad" style="padding:0.5rem 0.7rem;"><span class="label bad">Cons</span>
+          <ul><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Requires capable Drupal team + AI expertise</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Middleware layer: chunking, embedding, pipeline</li><li style="font-size:0.63em;padding:0.2em 0 0.2em 1.2em;">Ecosystem still maturing &mdash; you own maintenance</li></ul>
+        </div>
+      </div>
+      <div>
+        <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;margin:0 auto;display:block;">
+          <rect x="40" y="5" width="180" height="28" rx="4" fill="rgba(170,255,0,0.06)" stroke="#AAFF00" stroke-width="1.5"/>
+          <text x="130" y="23" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="9">Citizen Question</text>
+          <line x1="130" y1="33" x2="130" y2="47" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="130,51 126,44 134,44" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="20" y="55" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(170,255,0,0.2)" stroke-width="1.5"/>
+          <text x="130" y="70" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="10" font-weight="600">Drupal + Search API</text>
+          <text x="130" y="82" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Structured content, taxonomies</text>
+          <line x1="130" y1="87" x2="130" y2="101" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="130,105 126,98 134,98" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="20" y="109" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(255,176,32,0.2)" stroke-width="1.5"/>
+          <text x="130" y="124" text-anchor="middle" fill="#FFB020" font-family="monospace" font-size="10" font-weight="600">Vector Database</text>
+          <text x="130" y="136" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Embeddings, semantic retrieval</text>
+          <line x1="130" y1="141" x2="130" y2="155" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="130,159 126,152 134,152" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="20" y="163" width="220" height="32" rx="4" fill="#101E35" stroke="rgba(255,176,32,0.15)" stroke-width="1.5"/>
+          <text x="130" y="178" text-anchor="middle" fill="#FFB020" font-family="monospace" font-size="10" font-weight="600">LLM (Any Provider)</text>
+          <text x="130" y="190" text-anchor="middle" fill="#7A9BBF" font-family="monospace" font-size="7">Azure, Google, Anthropic, OpenAI...</text>
+          <line x1="130" y1="195" x2="130" y2="209" stroke="#7A9BBF" stroke-width="1" opacity="0.4"/>
+          <polygon points="130,213 126,206 134,206" fill="#7A9BBF" opacity="0.4"/>
+          <rect x="40" y="217" width="180" height="28" rx="4" fill="rgba(170,255,0,0.06)" stroke="#AAFF00" stroke-width="1.5"/>
+          <text x="130" y="235" text-anchor="middle" fill="#AAFF00" font-family="monospace" font-size="9">Grounded Answer + Citations</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Drupal's structured content and APIs are a genuine head start. The 48+ provider integrations mean you can swap LLMs without rebuilding. Most control, lowest long-term cost, most upfront investment.</aside>
+</section>
+
+
+<!-- ════════════════ {020} CONTENT FOUNDATION ════════════════ -->
+<section data-background-color="#060A12" data-id="020">
+  <div class="slide-watermark wm-center"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc" style="align-items:center;text-align:center;">
+    <span class="slide-tag">{020}</span>
+    <div class="accent-line amber" style="margin:0 auto 0.4em;"></div>
+    <h2 style="font-size:1.3em;text-align:center;">The Content Foundation Requirement</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.82em;font-weight:500;color:var(--amber);margin:0.2em 0 0.8em;">Whichever path you choose:</p>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:1.15em;font-weight:600;line-height:1.8;text-align:center;max-width:80%;margin:0 auto;">
+      Your content has to be <span style="color:var(--accent);">current</span>.<br>
+      Your content has to be <span style="color:var(--accent);">structured</span>.<br>
+      Your content has to be <span style="color:var(--accent);">governed</span>.
+    </p>
+    <p style="color:var(--muted);font-style:italic;font-size:0.72em;text-align:center;max-width:70%;margin:0.8em auto 0;">
+      AI doesn't fix bad content.<br>It retrieves it. Generates from it. Cites it. <span style="color:var(--red);">Confidently.</span>
+    </p>
+  </div>
+  <aside class="notes">This is the point worth repeating. Every vendor will tell you their platform handles content quality — none of them do. The content work is yours regardless of path.</aside>
+</section>
+
+
+<!-- ════════════════ {021} DON'T PANIC ════════════════ -->
+<section data-background-color="#060A12" data-id="021">
+  <div class="slide-watermark wm-tr"><img src="assets/2022-ec-logo-icon-only.png" alt=""></div>
+  <div class="vc">
+    <span class="slide-tag">{021}</span>
+    <div class="accent-line"></div>
+    <h2 style="font-size:1.4em;">Don't Panic</h2>
+    <p style="font-family:'Rajdhani',sans-serif;font-size:0.85em;font-weight:500;color:var(--muted);margin:0.1em 0 0.5em;">Where government actually is right now.</p>
+    <div class="cols-3" style="margin-top:0.1em;gap:1em;">
+      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid var(--border);border-radius:6px;">
+        <span class="stat-number" style="font-size:2.6em;">24%</span>
+        <span class="stat-label" style="margin-top:0.2em;">of state CIOs have data governance frameworks for GenAI</span>
+      </div>
+      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(255,176,32,0.15);border-radius:6px;">
+        <span class="stat-number" style="font-size:2.6em;color:var(--amber);">82%</span>
+        <span class="stat-label" style="margin-top:0.2em;">of state gov employees using GenAI</span>
+        <span class="stat-context">Almost entirely internal</span>
+      </div>
+      <div style="text-align:center;padding:0.5rem;background:var(--panel);border:1px solid rgba(255,77,77,0.12);border-radius:6px;">
+        <span class="stat-number" style="font-size:2.6em;color:var(--red);">~0</span>
+        <span class="stat-label" style="margin-top:0.2em;">citizen-facing grounded AI search at scale in US gov</span>
+      </div>
+    </div>
+    <div style="margin-top:0.4em;padding:0.35em 0.8em;background:rgba(170,255,0,0.04);border:1px solid rgba(170,255,0,0.15);border-radius:4px;">
+      <p style="font-family:'Rajdhani',sans-serif;font-size:0.72em;font-weight:500;margin:0;color:var(--muted);">Most states are "developing" and prototyping across all AI readiness categories. The ones who look "behind" are often just being responsible.</p>
+    </div>
+  </div>
+  <aside class="notes">82% sounds impressive — it means drafting emails and summarizing documents. Utah and Indiana are moving carefully, keeping AI internal until ready. Source: Code for America AI Landscape Assessment.</aside>
+</section>
+
+
+<!-- ════════════════ {022} CLOSING ════════════════ -->
+<section data-background-color="#060A12" data-id="022">
+  <span class="motif-bg pos-br"><img src="assets/ec-bolt.svg" alt=""></span>
+  <div class="split">
+    <div class="split-visual" style="background:var(--panel2);">
+      <img src="assets/2022-ec-logo-icon-only.svg" alt="Electric Citizen" style="width:140px;height:auto;opacity:0.85;">
+      <div style="margin-top:1rem;text-align:center;">
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--muted);margin:0;">Dan Moriarty &mdash; Co-founder</p>
+        <p style="font-family:'Fira Code',monospace;font-size:0.5em;color:var(--muted);margin:0.15em 0;">Tim Broeker &mdash; Co-founder</p>
+      </div>
+      <div style="margin-top:1.2rem;text-align:center;">
+        <div style="width:100px;height:100px;border:2px dashed var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;margin:0 auto;">
+          <span style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--muted);text-align:center;">QR CODE<br>TBD</span>
+        </div>
+        <p style="font-family:'Fira Code',monospace;font-size:0.45em;color:var(--muted);margin-top:0.4em;">electriccitizen.com</p>
+      </div>
+    </div>
+    <div class="split-content">
+      <span class="slide-tag">{022}</span>
+      <div class="accent-line"></div>
+      <h2 class="glow" style="font-size:2em;">Let's Talk</h2>
+      <p style="color:var(--muted);font-style:italic;font-size:0.72em;max-width:90%;margin-bottom:0.5em;">
+        We've been working in state &amp; local government for 15 years. Right now there is no more interesting moment to be doing it.
+      </p>
+      <div class="panel panel-amber" style="margin-bottom:0.4em;">
+        <div class="panel-label">Conversations We're Having</div>
+        <ul><li style="font-size:0.65em;">Getting foundations right &mdash; content audits, IA, governance</li><li style="font-size:0.65em;">Prototyping what comes next &mdash; grounded AI search pilots</li></ul>
+      </div>
+      <div class="closing-links">
+        <div class="closing-link">
+          <span class="closing-link-label">Web</span>
+          <a href="https://electriccitizen.com">electriccitizen.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Open for questions. We're not selling AI search — we're helping clients understand the landscape and make informed decisions.</aside>
+</section>
+
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+Reveal.initialize({
+  hash: true, slideNumber: 'c/t', progress: true,
+  transition: 'fade', transitionSpeed: 'fast', backgroundTransition: 'fade',
+  center: false, width: 1280, height: 720, margin: 0.04,
+  plugins: [ RevealNotes, RevealHighlight ]
+});
+
+// Path card spotlight: highlight current, blur others
+Reveal.on('fragmentshown', function(e) {
+  var section = e.fragment.closest('section');
+  if (section && section.id === 'choose-path') {
+    var cards = section.querySelectorAll('.path-card');
+    var idx = parseInt(e.fragment.dataset.fragmentIndex);
+    cards.forEach(function(c, i) {
+      if (i === idx + 1) {
+        c.style.opacity = '1';
+        c.style.filter = 'none';
+      } else {
+        c.style.opacity = '0.2';
+        c.style.filter = 'blur(2px)';
+      }
+    });
+  }
+});
+Reveal.on('fragmenthidden', function(e) {
+  var section = e.fragment.closest('section');
+  if (section && section.id === 'choose-path') {
+    var cards = section.querySelectorAll('.path-card');
+    var idx = parseInt(e.fragment.dataset.fragmentIndex);
+    if (idx === 0) {
+      // Back to initial: card 1 visible, 2+3 hidden
+      cards[0].style.opacity = '1';
+      cards[0].style.filter = 'none';
+      cards[1].style.opacity = '0';
+      cards[2].style.opacity = '0';
+    } else if (idx === 1) {
+      // Back to card 2: card 2 bright, 1+3 dim
+      cards[0].style.opacity = '0.2';
+      cards[0].style.filter = 'blur(2px)';
+      cards[1].style.opacity = '1';
+      cards[1].style.filter = 'none';
+      cards[2].style.opacity = '0';
+    }
+  }
+});
+</script>
+</body>
+</html>
